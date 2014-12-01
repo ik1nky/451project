@@ -1,11 +1,12 @@
+package objects;
 
-public class OrGate  extends JLSElement
+public class XorGate  extends JLSElement
 {
-	//Variables assumed
+	//variables assumed
 	
 	protected String printObject()
 	{
-		return (  "ELEMENT OrGate\n"
+		return (  "ELEMENT XorGate\n"
 				+ " int id " + id + "\n"
 				+ " int x " + x + "\n"
 				+ " int y " + y + "\n"
@@ -18,4 +19,5 @@ public class OrGate  extends JLSElement
 				+ "END\n"
 				);
 	}
+
 }

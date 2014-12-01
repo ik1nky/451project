@@ -1,11 +1,21 @@
+package objects;
 
-public class XorGate  extends JLSElement
+public class NorGate extends JLSElement
 {
-	//variables assumed
-	
+
+	int id;
+	int x;
+	int y;
+	int width;
+	int height;
+	int bits;
+	int numInputs;
+	String orientation;
+	int delay;
+
 	protected String printObject()
 	{
-		return (  "ELEMENT XorGate\n"
+		return (  "ELEMENT NorGate\n"
 				+ " int id " + id + "\n"
 				+ " int x " + x + "\n"
 				+ " int y " + y + "\n"
@@ -14,9 +24,8 @@ public class XorGate  extends JLSElement
 				+ " int bits 1\n"
 				+ " int numInputs 2\n"
 				+ " String orientation \"right\"\n"
-				+ " int delay 10\n"
+				+ " int delay 5\n"
 				+ "END\n"
 				);
 	}
-
 }

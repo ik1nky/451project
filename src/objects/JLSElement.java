@@ -1,5 +1,6 @@
+package objects;
 
-public class JLSElement 
+public class JLSElement
 {
 	int id;
 	int x;

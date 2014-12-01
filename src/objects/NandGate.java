@@ -1,10 +1,14 @@
+package objects;
 
-public class NorGate extends JLSElement
+import objects.JLSElement;
+
+public class NandGate  extends JLSElement
 {
-
+	//Variables assumed
+	
 	protected String printObject()
 	{
-		return (  "ELEMENT NorGate\n"
+		return (  "ELEMENT NandGate\n"
 				+ " int id " + id + "\n"
 				+ " int x " + x + "\n"
 				+ " int y " + y + "\n"

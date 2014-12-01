@@ -1,12 +1,15 @@
+package objects;
 
-public class AndGate extends JLSElement
+import objects.JLSElement;
+
+public class NotGate extends JLSElement
 {
-	//Variables assumed
+	//variables assumed
 	
 	
 	protected String printObject()
 	{
-		return (  "ELEMENT AndGate\n"
+		return (  "ELEMENT NotGate\n"
 				+ " int id " + id + "\n"
 				+ " int x " + x + "\n"
 				+ " int y " + y + "\n"
@@ -15,8 +18,9 @@ public class AndGate extends JLSElement
 				+ " int bits 1\n"
 				+ " int numInputs 2\n"
 				+ " String orientation \"right\"\n"
-				+ " int delay 10\n"
+				+ " int delay 5\n"
 				+ "END\n"
 				);
 	}
+
 }

@@ -1,11 +1,22 @@
+package objects;
 
-public class NandGate  extends JLSElement
+import objects.JLSElement;
+
+public class AndGate extends JLSElement
 {
-	//Variables assumed
-	
+	int id;
+	int x;
+	int y;
+	int width;
+	int height;
+	int bits;
+	int numInputs;
+	String orientation;
+	int delay;
+
 	protected String printObject()
 	{
-		return (  "ELEMENT NandGate\n"
+		return (  "ELEMENT AndGate\n"
 				+ " int id " + id + "\n"
 				+ " int x " + x + "\n"
 				+ " int y " + y + "\n"
@@ -14,7 +25,7 @@ public class NandGate  extends JLSElement
 				+ " int bits 1\n"
 				+ " int numInputs 2\n"
 				+ " String orientation \"right\"\n"
-				+ " int delay 5\n"
+				+ " int delay 10\n"
 				+ "END\n"
 				);
 	}
