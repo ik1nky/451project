@@ -71,7 +71,7 @@ public class Loader extends JPanel implements ActionListener {
                             System.out.println("datatype: " + dataType + ", name: " + name + ", value: " + value);
                             switch (dataType) {
                                 case "pair":
-                                    ((Splitter) element)
+                                    ((Splitter) element).addPair(Integer.parseInt(name), Integer.parseInt(value));
                                     System.out.println("Setup a pair...");
                                     break;
                             }
