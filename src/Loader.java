@@ -1,8 +1,5 @@
 import com.sun.tools.doclets.internal.toolkit.util.DocFinder;
-import objects.InputPin;
-import objects.JLSElement;
-import objects.JumpStart;
-import objects.OutputPin;
+import objects.*;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -95,8 +92,42 @@ public class Loader extends JPanel implements ActionListener {
                                             ((OutputPin) element).setName(value);
                                         case "JumpStart":
                                             ((JumpStart) element).setName(value);
-
+                                        case "JumpEnd":
+                                            ((JumpEnd) element).setName(value);
+                                        default:
+                                            System.out.println("Error when parsing name var: " + componentType);
+                                            System.exit(2);
                                     }
+                                case "bits":
+                                    //splitter, jumpstart, jumpend, outputpin, inputpin,
+                                    switch (componentType){
+                                        case "InputPin":
+                                            ((InputPin) element).setBits(Integer.parseInt(value));
+                                        case "OutputPin":
+                                            ((OutputPin) element).setBits(Integer.parseInt(value));
+                                        case "JumpStart":
+                                            ((JumpStart) element).setBits(Integer.parseInt(value));
+                                        case "JumpEnd":
+                                            ((JumpEnd) element).setBits(Integer.parseInt(value));
+                                        case "Splitter":
+                                            ((Splitter) element).setBits(Integer.parseInt(value));
+                                        default:
+                                            System.out.println("Error when parsing bits var: " + componentType);
+                                            System.exit(2);
+                                    }
+                                case "delay":
+                                    ((Gate) element).setDelay(Integer.parseInt(value));
+                                case "orientation":
+                                    if (element instanceof Gate){
+                                        ((Gate) element).setOrientation(value);
+                                    }else if (element instanceof Jump){
+                                        ((Jump) element).setOrientation(value);
+                                    }
+                                case "numinputs":
+                                    ((Gate) element).setNumInputs(Integer.parseInt(value));
+                                default:
+                                    System.out.println("Problem parsing element. Component type: " + componentType + ", ");
+                                    System.exit(3);
 
                             }
 
