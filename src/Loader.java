@@ -134,7 +134,7 @@ public class Loader extends JPanel implements ActionListener {
                                     else {
                                         printParseError(componentType, element);
                                     }
-
+                                    break;
                                 case "delay":
                                     if(element instanceof Gate) {
                                         ((Gate) element).setDelay(Integer.parseInt(value));
