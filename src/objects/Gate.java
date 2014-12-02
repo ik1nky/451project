@@ -3,7 +3,7 @@ package objects;
 /**
  * Created by jacksrosenhauerii on 12/1/14.
  */
-public class Gate extends JLSElement{
+public class Gate extends JLSElement {
 
     int bits;
     int numInputs;
@@ -11,7 +11,7 @@ public class Gate extends JLSElement{
     int delay;
 
 
-    public Gate(){
+    public Gate() {
 
     }
 
@@ -55,9 +55,8 @@ public class Gate extends JLSElement{
         this.delay = delay;
     }
 
-    public String toString()
-    {
-        return (  " int id " + id + "\n"
+    public String toString() {
+        return (" int id " + id + "\n"
                 + " int x " + x + "\n"
                 + " int y " + y + "\n"
                 + " int width " + width + "\n"

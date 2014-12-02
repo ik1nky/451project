@@ -1,6 +1,5 @@
 package objects;
 
-public class printingthings
-{
-	
+public class printingthings {
+
 }

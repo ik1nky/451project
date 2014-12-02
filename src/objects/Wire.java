@@ -10,7 +10,10 @@ public class Wire extends JLSElement {
     ArrayList<Integer> attach;
     ArrayList<Integer> wire;
 
-
+    public Wire() {
+        attach = new ArrayList<Integer>();
+        wire = new ArrayList<Integer>();
+    }
 
     public String getPut() {
         return put;
@@ -36,25 +39,26 @@ public class Wire extends JLSElement {
         this.wire = wire;
     }
 
-    public void addWire(int wireId){
+    public void addWire(int wireId) {
         wire.add(wireId);
     }
 
-    public void removeWire(int wireId){
-        for (Integer id : this.wire){
-            if (id == wireId){
+    public void removeWire(int wireId) {
+        for (Integer id : this.wire) {
+            if (id == wireId) {
                 wire.remove(id);
             }
         }
     }
 
-    public void addAttach(int wireId){
+    public void addAttach(int wireId) {
+        System.out.println("Adding attach: " + wireId);
         wire.add(wireId);
     }
 
-    public void removeAttach(int wireId){
-        for (Integer id : this.wire){
-            if (id == wireId){
+    public void removeAttach(int wireId) {
+        for (Integer id : this.wire) {
+            if (id == wireId) {
                 attach.remove(id);
             }
         }

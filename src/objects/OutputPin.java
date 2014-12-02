@@ -3,7 +3,7 @@ package objects;
 /**
  * Created by jackrosenhauer on 12/1/14.
  */
-public class OutputPin extends JLSElement{
+public class OutputPin extends JLSElement {
     String name;
     int bits;
     int watch;

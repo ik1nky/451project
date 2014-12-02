@@ -5,13 +5,15 @@ import java.util.ArrayList;
 /**
  * Created by jackrosenhauer on 12/1/14.
  */
-public class Splitter extends JLSElement{
+public class Splitter extends JLSElement {
     int bits;
     String orient;
     String noncontig;
     int tristate;
+    ArrayList<Pair> pairs;
 
     public Splitter() {
+        pairs = new ArrayList<Pair>();
     }
 
     public Splitter(int id, int x, int y, int width, int height, int bits, String orient, String noncontig, int tristate) {
@@ -53,4 +55,27 @@ public class Splitter extends JLSElement{
     public void setTristate(int tristate) {
         this.tristate = tristate;
     }
+
+    public ArrayList<Pair> getPairs() {
+        return pairs;
+    }
+
+    public void setPairs(ArrayList<Pair> pairs) {
+        this.pairs = pairs;
+    }
+
+    public void addPair(int x, int y){
+        Pair p = new Pair(x, y);
+        pairs.add(p);
+    }
+
+    public Boolean removePair(int x, int y){
+        Pair p = new Pair(x, y);
+        if (pairs.contains(p)){
+            pairs.remove(p);
+            return true;
+        }
+        return false;
+    }
 }
+
