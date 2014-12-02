@@ -1,6 +1,6 @@
 package objects;
 
-public class NorGate extends JLSElement
+public class NorGate extends Gate
 {
 
 	int id;
@@ -13,19 +13,10 @@ public class NorGate extends JLSElement
 	String orientation;
 	int delay;
 
-	protected String printObject()
-	{
-		return (  "ELEMENT NorGate\n"
-				+ " int id " + id + "\n"
-				+ " int x " + x + "\n"
-				+ " int y " + y + "\n"
-				+ " int width " + width + "\n"
-				+ " int height " + height + "\n"
-				+ " int bits 1\n"
-				+ " int numInputs 2\n"
-				+ " String orientation \"right\"\n"
-				+ " int delay 5\n"
-				+ "END\n"
-				);
+	public NorGate() {
+	}
+
+	public String toString(){
+		return "ELEMENT NorGate\n" + super.toString();
 	}
 }

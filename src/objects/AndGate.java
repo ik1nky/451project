@@ -1,32 +1,15 @@
 package objects;
 
-import objects.JLSElement;
-
-public class AndGate extends JLSElement
+public class AndGate extends Gate
 {
-	int id;
-	int x;
-	int y;
-	int width;
-	int height;
-	int bits;
-	int numInputs;
-	String orientation;
-	int delay;
+	public AndGate(int id, int x, int y, int width, int height, int bits, int numInputs, String orientation, int delay) {
+		super(id, x, y, width, height, bits, numInputs, orientation, delay);
+	}
 
-	protected String printObject()
-	{
-		return (  "ELEMENT AndGate\n"
-				+ " int id " + id + "\n"
-				+ " int x " + x + "\n"
-				+ " int y " + y + "\n"
-				+ " int width " + width + "\n"
-				+ " int height " + height + "\n"
-				+ " int bits 1\n"
-				+ " int numInputs 2\n"
-				+ " String orientation \"right\"\n"
-				+ " int delay 10\n"
-				+ "END\n"
-				);
+	public AndGate() {
+	}
+
+	public String toString(){
+		return "ELEMENT AndGate\n" + super.toString();
 	}
 }
