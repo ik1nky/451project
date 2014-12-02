@@ -60,7 +60,7 @@ public class Loader extends JPanel implements ActionListener {
                         //System.out.println(scan.nextLine());
                         String componentType = scan.next();
                         element = getTypeObject(componentType);
-                        System.out.println("Class: " + element.getClass());
+                        //System.out.println("Class: " + element.getClass());
                         String token;
 
                         while (!(token = scan.next()).equals("END")) {
@@ -68,7 +68,7 @@ public class Loader extends JPanel implements ActionListener {
                             String name = scan.next();
                             String value = scan.next();
 
-                            System.out.println("datatype: " + dataType + ", name: " + name + ", value: " + value);
+                            //System.out.println("datatype: " + dataType + ", name: " + name + ", value: " + value);
                             switch (dataType) {
                                 case "pair":
                                     if(element instanceof Splitter)
@@ -80,11 +80,11 @@ public class Loader extends JPanel implements ActionListener {
                                         printParseError(componentType,element);
                                     }
 
-                                    System.out.println("Setup a pair...");
+                                    //System.out.println("Setup a pair...");
                                     break;
                             }
 
-                            System.out.println("Switching name: " + name.toLowerCase());
+                            //System.out.println("Switching name: " + name.toLowerCase());
                             switch (name.toLowerCase()) {
 
                                 case "id":
@@ -104,7 +104,7 @@ public class Loader extends JPanel implements ActionListener {
                                     break;
                                 case "name":
                                     //inputpin, outputpin, jumpstart, jumpend
-                                    System.out.println("Switching component type: " + componentType + " element is of type: " + element.getClass());
+                                    //System.out.println("Switching component type: " + componentType + " element is of type: " + element.getClass());
                                     if(element instanceof InputPin) {
                                         ((InputPin)element).setName(value);
                                     } else if(element instanceof OutputPin) {
@@ -124,14 +124,13 @@ public class Loader extends JPanel implements ActionListener {
                                         ((InputPin) element).setBits(Integer.parseInt(value));
                                     } else if(element instanceof OutputPin) {
                                         ((OutputPin) element).setBits(Integer.parseInt(value));
-                                    } else if(element instanceof JumpStart) {
-                                        ((JumpStart) element).setBits(Integer.parseInt(value));
-                                    } else if(element instanceof JumpEnd) {
-                                        ((JumpEnd) element).setBits(Integer.parseInt(value));
-                                    } else if(element instanceof Splitter) {
+                                    } else if(element instanceof Jump) {
+                                        ((Jump) element).setBits(Integer.parseInt(value));
+                                    }else if(element instanceof Splitter) {
                                         ((Splitter) element).setBits(Integer.parseInt(value));
-                                    }
-                                    else {
+                                    }else if(element instanceof Gate) {
+                                        ((Gate) element).setBits(Integer.parseInt(value));
+                                    }else{
                                         printParseError(componentType, element);
                                     }
                                     break;

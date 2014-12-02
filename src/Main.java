@@ -12,7 +12,8 @@ public class Main extends JPanel implements ActionListener {
         //input the file....
         Loader l = new Loader();
         Hashtable table = l.load();
-        System.out.println(table.values());
+        System.out.println(table.size());
+        System.out.println(table.get(1).toString());
     }
 
     @Override

@@ -6,6 +6,7 @@ public class AndGate extends Gate {
     }
 
     public AndGate() {
+
     }
 
     public String toString() {

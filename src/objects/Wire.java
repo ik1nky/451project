@@ -52,7 +52,7 @@ public class Wire extends JLSElement {
     }
 
     public void addAttach(int wireId) {
-        System.out.println("Adding attach: " + wireId);
+        //System.out.println("Adding attach: " + wireId);
         wire.add(wireId);
     }
 
