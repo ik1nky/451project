@@ -125,8 +125,31 @@ public class Loader extends JPanel implements ActionListener {
                                     }
                                 case "numinputs":
                                     ((Gate) element).setNumInputs(Integer.parseInt(value));
+                                case "tristate":
+                                    ((Splitter) element).setTristate(Integer.parseInt(value));
+                                case "noncontig":
+                                    ((Splitter) element).setNoncontig(value);
+                                case "orient":
+                                    if (element instanceof Splitter) {
+                                        ((Splitter) element).setOrient(value);
+                                    }else if (element instanceof InputPin){
+                                        ((InputPin) element).setOrient(value);
+                                    }else if (element instanceof OutputPin){
+                                        ((OutputPin) element).setOrient(value);
+                                    }else{
+                                        System.out.println("Error when parsing orient var: " + componentType);
+                                    }
+                                case "put":
+                                    ((WireEnd) element).setPut(value);
+                                case "ref":
+                                    if (name.equals("attach")){
+                                        ((WireEnd) element).addAttach(Integer.parseInt(value));
+                                    }else if (name.equals("wire")) {
+                                        ((WireEnd) element).addWire(Integer.parseInt(value));
+                                    }
+
                                 default:
-                                    System.out.println("Problem parsing element. Component type: " + componentType + ", ");
+                                    System.out.println("Problem parsing element. Component type: " + componentType + ", data type: " + dataType + ", name: " + name + " and value: " + value + ".");
                                     System.exit(3);
 
                             }
