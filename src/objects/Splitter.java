@@ -5,7 +5,7 @@ import java.util.ArrayList;
 /**
  * Created by jackrosenhauer on 12/1/14.
  */
-public class Splitter extends JLSElement{
+public class Splitter extends JLSElement {
     int bits;
     String orient;
     String noncontig;

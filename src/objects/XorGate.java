@@ -1,14 +1,13 @@
 package objects;
 
-public class XorGate  extends Gate
-{
-	//variables assumed
+public class XorGate extends Gate {
+    //variables assumed
 
-	public XorGate() {
-	}
+    public XorGate() {
+    }
 
-	public String toString(){
-		return "ELEMENT XorGate\n" + super.toString();
-	}
+    public String toString() {
+        return "ELEMENT XorGate\n" + super.toString();
+    }
 
 }
