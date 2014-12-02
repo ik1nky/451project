@@ -58,4 +58,8 @@ public class JLSElement {
     public void setHeight(int height) {
         this.height = height;
     }
+
+    public String getElementName(){
+        return this.getClass().getSimpleName();
+    }
 }

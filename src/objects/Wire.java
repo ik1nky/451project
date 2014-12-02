@@ -64,4 +64,9 @@ public class Wire extends JLSElement {
         }
     }
 
+    public String toString(){
+        return this.getClass().getSimpleName();
+    }
+
+
 }
