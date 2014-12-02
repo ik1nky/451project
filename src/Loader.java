@@ -71,7 +71,6 @@ public class Loader extends JPanel implements ActionListener {
                             System.out.println("datatype: " + dataType + ", name: " + name + ", value: " + value);
                             switch (dataType) {
                                 case "pair":
-
                                     if(element instanceof Splitter)
                                     {
                                         ((Splitter) element).addPair(Integer.parseInt(name), Integer.parseInt(value));
@@ -104,132 +103,44 @@ public class Loader extends JPanel implements ActionListener {
                                     element.setHeight(Integer.parseInt(value));
                                     break;
                                 case "name":
+                                    //inputpin, outputpin, jumpstart, jumpend
                                     System.out.println("Switching component type: " + componentType + " element is of type: " + element.getClass());
-                                    switch (componentType) {
-                                        case "InputPin":
-
-                                            if(element instanceof InputPin)
-                                            {
-                                                ((InputPin)element).setName(value);
-                                            }
-                                            else
-                                            {
-                                                printParseError(componentType,element);
-                                            }
-                                            //((InputPin) element).setName(value);
-                                            break;
-                                        case "OutputPin":
-                                            if(element instanceof OutputPin)
-                                            {
-                                                ((OutputPin)element).setName(value);
-                                            }
-                                            else
-                                            {
-                                                printParseError(componentType, element);
-                                            }
-                                            //((OutputPin) element).setName(value);
-                                            break;
-                                        case "JumpStart":
-                                            if(element instanceof JumpStart)
-                                            {
-                                                ((JumpStart)element).setName(value);
-                                            }
-                                            else
-                                            {
-                                                printParseError(componentType, element);
-                                            }
-                                            //((JumpStart) element).setName(value);
-                                            break;
-                                        case "JumpEnd":
-                                            if(element instanceof JumpEnd)
-                                            {
-                                                ((JumpEnd)element).setName(value);
-                                            }
-                                            else
-                                            {
-                                                printParseError(componentType, element);
-                                            }
-                                            //((JumpEnd) element).setName(value);
-                                            break;
-                                        default:
-                                            System.out.println("Error when parsing name variable: " + componentType);
-                                            System.exit(2);
-                                            break;
+                                    if(element instanceof InputPin) {
+                                        ((InputPin)element).setName(value);
+                                    } else if(element instanceof OutputPin) {
+                                        ((OutputPin)element).setName(value);
+                                    } else if(element instanceof JumpStart) {
+                                        ((JumpStart)element).setName(value);
+                                    } else if(element instanceof JumpEnd) {
+                                        ((JumpEnd)element).setName(value);
+                                    }
+                                    else {
+                                        printParseError(componentType,element);
                                     }
                                     break;
                                 case "bits":
                                     //splitter, jumpstart, jumpend, outputpin, inputpin,
-                                    switch (componentType) {
-                                        case "InputPin":
-                                            if(element instanceof InputPin)
-                                            {
-                                                ((InputPin) element).setBits(Integer.parseInt(value));
-                                            }
-                                            else
-                                            {
-                                                printParseError(componentType, element);
-                                            }
-                                            //((InputPin) element).setBits(Integer.parseInt(value));
-                                            break;
-                                        case "OutputPin":
-                                            if(element instanceof OutputPin)
-                                            {
-                                                ((OutputPin) element).setBits(Integer.parseInt(value));
-                                            }
-                                            else
-                                            {
-                                                printParseError(componentType, element);
-                                            }
-                                                //((OutputPin) element).setBits(Integer.parseInt(value));
-                                            break;
-                                        case "JumpStart":
-                                            if(element instanceof JumpStart)
-                                            {
-                                                ((JumpStart) element).setBits(Integer.parseInt(value));
-                                            }
-                                            else
-                                            {
-                                                printParseError(componentType, element);
-                                            }
-                                            //((JumpStart) element).setBits(Integer.parseInt(value));
-                                            break;
-                                        case "JumpEnd":
-                                            if(element instanceof JumpEnd) {
-                                                ((JumpEnd) element).setBits(Integer.parseInt(value));
-                                            }
-                                            else
-                                            {
-                                                printParseError(componentType, element);
-                                            }
-                                            //((JumpEnd) element).setBits(Integer.parseInt(value));
-                                            break;
-                                        case "Splitter":
-                                            if(element instanceof Splitter)
-                                            {
-                                                ((Splitter) element).setBits(Integer.parseInt(value));
-                                            }
-                                            else
-                                            {
-                                                printParseError(componentType,element);
-                                            }
-                                            //((Splitter) element).setBits(Integer.parseInt(value));
-                                            break;
-                                        default:
-                                            System.out.println("Error when parsing bits var: " + componentType);
-                                            System.exit(2);
-                                            break;
+                                    if(element instanceof InputPin) {
+                                        ((InputPin) element).setBits(Integer.parseInt(value));
+                                    } else if(element instanceof OutputPin) {
+                                        ((OutputPin) element).setBits(Integer.parseInt(value));
+                                    } else if(element instanceof JumpStart) {
+                                        ((JumpStart) element).setBits(Integer.parseInt(value));
+                                    } else if(element instanceof JumpEnd) {
+                                        ((JumpEnd) element).setBits(Integer.parseInt(value));
+                                    } else if(element instanceof Splitter) {
+                                        ((Splitter) element).setBits(Integer.parseInt(value));
                                     }
-                                    break;
+                                    else {
+                                        printParseError(componentType, element);
+                                    }
+
                                 case "delay":
-                                    if(element instanceof Gate)
-                                    {
+                                    if(element instanceof Gate) {
                                         ((Gate) element).setDelay(Integer.parseInt(value));
-                                    }
-                                    else
-                                    {
+                                    } else {
                                         printParseError(componentType,element);
                                     }
-                                    //((Gate) element).setDelay(Integer.parseInt(value));
                                     break;
                                 case "orientation":
                                     if (element instanceof Gate) {
@@ -239,40 +150,27 @@ public class Loader extends JPanel implements ActionListener {
                                     } else {
                                         printParseError(componentType,element);
                                     }
-
                                     break;
                                 case "numinputs":
-                                    if(element instanceof Gate)
-                                    {
+                                    if(element instanceof Gate) {
                                         ((Gate) element).setNumInputs(Integer.parseInt(value));
-                                    }
-                                    else
-                                    {
+                                    } else {
                                         printParseError(componentType,element);
                                     }
-                                    //((Gate) element).setNumInputs(Integer.parseInt(value));
                                     break;
                                 case "tristate":
-                                    if(element instanceof Splitter)
-                                    {
+                                    if(element instanceof Splitter) {
                                         ((Splitter) element).setTristate(Integer.parseInt(value));
-                                    }
-                                    else
-                                    {
+                                    } else {
                                         printParseError(componentType,element);
                                     }
-                                    //((Splitter) element).setTristate(Integer.parseInt(value));
                                     break;
                                 case "noncontig":
-                                    if(element instanceof Splitter)
-                                    {
+                                    if(element instanceof Splitter) {
                                         ((Splitter) element).setNoncontig(value);
-                                    }
-                                    else
-                                    {
+                                    } else {
                                         printParseError(componentType,element);
                                     }
-                                    //((Splitter) element).setNoncontig(value);
                                     break;
                                 case "orient":
                                     if (element instanceof Splitter) {
@@ -286,37 +184,25 @@ public class Loader extends JPanel implements ActionListener {
                                     }
                                     break;
                                 case "put":
-                                    if(element instanceof WireEnd)
-                                    {
+                                    if(element instanceof WireEnd) {
                                         ((WireEnd) element).setPut(value);
-                                    }
-                                    else
-                                    {
+                                    } else {
                                         printParseError(componentType,element);
                                     }
-                                    //((WireEnd) element).setPut(value);
                                     break;
                                 case "attach":
-                                    if(element instanceof WireEnd)
-                                    {
+                                    if(element instanceof WireEnd) {
                                         ((WireEnd) element).addAttach(Integer.parseInt(value));
-                                    }
-                                    else
-                                    {
+                                    } else {
                                         printParseError(componentType,element);
                                     }
-                                    //((WireEnd) element).addAttach(Integer.parseInt(value));
                                     break;
                                 case "wire":
-                                    if(element instanceof WireEnd)
-                                    {
+                                    if(element instanceof WireEnd) {
                                         ((WireEnd) element).addWire(Integer.parseInt(value));
-                                    }
-                                    else
-                                    {
+                                    } else {
                                         printParseError(componentType,element);
                                     }
-                                    //((WireEnd) element).addWire(Integer.parseInt(value));
                                     break;
                                 case "watch":
                                     if (element instanceof OutputPin) {
@@ -336,13 +222,11 @@ public class Loader extends JPanel implements ActionListener {
                                         System.exit(3);
                                     }
                                     break;
-
                             }
                             hashTable.put(element.getId(), element);
                         }
                     }
                 }
-
             } catch (Exception e) {
                 e.printStackTrace();
             }
