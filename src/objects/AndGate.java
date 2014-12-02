@@ -9,7 +9,7 @@ public class AndGate extends Gate {
 
     }
 
-    public String toString() {
+    /*public String toString() {
         return "ELEMENT AndGate\n" + super.toString();
-    }
+    }*/
 }
