@@ -63,7 +63,7 @@ public class Gate extends JLSElement {
                 + " int height " + height + "\n"
                 + " int bits " + bits + "\n"
                 + " int numInputs " + numInputs + "\n"
-                + " String orientation \" " + orientation + "\"\n"
+                + " String orientation " + orientation + "\n"
                 + " int delay " + delay + "\n"
                 + "END\n"
         );
