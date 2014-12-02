@@ -3,30 +3,23 @@ package objects;
 /**
  * Created by jackrosenhauer on 12/1/14.
  */
-public class JumpStart extends JLSElement {
-    int id;
-    int x;
-    int y;
-    int width;
-    int heigh;
-    String name;
-    int bits;
+public class JumpStart extends Jump {
     int watch;
-    String orientation;
 
     public JumpStart() {
 
     }
 
-    public JumpStart(int id, int x, int y, int width, int heigh, String name, int bits, int watch, String orientation) {
-        this.id = id;
-        this.x = x;
-        this.y = y;
-        this.width = width;
-        this.heigh = heigh;
-        this.name = name;
-        this.bits = bits;
+    public JumpStart(int id, int x, int y, int width, int height, String name, int bits, String orientation, int watch) {
+        super(id, x, y, width, height, name, bits, orientation);
         this.watch = watch;
-        this.orientation = orientation;
+    }
+
+    public int getWatch() {
+        return watch;
+    }
+
+    public void setWatch(int watch) {
+        this.watch = watch;
     }
 }

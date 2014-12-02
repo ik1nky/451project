@@ -1,4 +1,8 @@
+import com.sun.tools.doclets.internal.toolkit.util.DocFinder;
+import objects.InputPin;
 import objects.JLSElement;
+import objects.JumpStart;
+import objects.OutputPin;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -74,17 +78,25 @@ public class Loader extends JPanel implements ActionListener {
 
                             switch (name.toLowerCase()){
                                 case "id":
-                                    element.setId(Integer.parseInt(scan.next()));
+                                    element.setId(Integer.parseInt(value));
                                 case "x":
-                                    element.setX(Integer.parseInt(scan.next()));
+                                    element.setX(Integer.parseInt(value));
                                 case "y":
-                                    element.setY(Integer.parseInt(scan.next()));
+                                    element.setY(Integer.parseInt(value));
                                 case "width":
-                                    element.setWidth(Integer.parseInt(scan.next()));
+                                    element.setWidth(Integer.parseInt(value));
                                 case "height":
-                                    element.setHeight(Integer.parseInt(scan.next()));
+                                    element.setHeight(Integer.parseInt(value));
                                 case "name":
-                                    element.setName(Integer.parseInt(scan.next()));
+                                    switch (componentType){
+                                        case "InputPin":
+                                            ((InputPin) element).setName(value);
+                                        case "OutputPin":
+                                            ((OutputPin) element).setName(value);
+                                        case "JumpStart":
+                                            ((JumpStart) element).setName(value);
+
+                                    }
 
                             }
 
