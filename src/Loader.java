@@ -1,4 +1,3 @@
-import com.sun.tools.doclets.internal.toolkit.util.DocFinder;
 import objects.*;
 
 import javax.swing.*;
@@ -11,7 +10,6 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.Scanner;
-import java.util.zip.Inflater;
 import java.util.zip.ZipInputStream;
 
 /**
@@ -22,7 +20,7 @@ public class Loader extends JPanel implements ActionListener {
     ArrayList<JLSElement> elements = new ArrayList<JLSElement>();
     Hashtable<Integer, JLSElement> hashTable = new Hashtable<Integer, JLSElement>();
 
-    public Loader() {
+    public Hashtable load() {
         JFileChooser fc = new JFileChooser(".");
         JFrame main = new JFrame();
         FileNameExtensionFilter filter = new FileNameExtensionFilter("JLS Files", new String[]{"jls"});
@@ -54,12 +52,12 @@ public class Loader extends JPanel implements ActionListener {
                 } else {
 
                     circName = scan.next();
-
+                    JLSElement element;
                     System.out.println("Circuit Name: " + circName);
                     while (scan.next().equals("ELEMENT")) {
                         //System.out.println(scan.nextLine());
                         String componentType = scan.next();
-                        JLSElement element = getTypeObject(componentType);
+                        element = getTypeObject(componentType);
                         System.out.println("Class: " + element.getClass());
                         String token;
 
@@ -198,10 +196,12 @@ public class Loader extends JPanel implements ActionListener {
                                     break;
 
                             }
-
+                            hashTable.put(element.getId(), element);
                         }
                     }
+
                 }
+
 
             } catch (Exception e) {
                 e.printStackTrace();
@@ -209,6 +209,7 @@ public class Loader extends JPanel implements ActionListener {
         } else {
             System.out.println("Something went wrong");
         }
+        return hashTable;
     }
 
     public JLSElement getTypeObject(String type) {
@@ -240,7 +241,6 @@ public class Loader extends JPanel implements ActionListener {
             return null;
         }
     }
-
     @Override
     public void actionPerformed(ActionEvent e) {
 
