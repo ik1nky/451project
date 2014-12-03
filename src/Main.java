@@ -35,6 +35,17 @@ public class Main extends JPanel implements ActionListener {
             e.printStackTrace();
         }
 
+        Main fuck = new Main();
+
+        Hashtable random = fuck.randomizer(table);
+
+        try {
+            s.save(random, l.getCircuitName(), "test" + l.getFilename(), l.getFile().getCanonicalPath() + "LULZ");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
         System.exit(0);
 
     }
@@ -52,8 +63,8 @@ public class Main extends JPanel implements ActionListener {
         Hashtable<Integer, JLSElement> toreturn = new Hashtable<Integer, JLSElement>();
 
         for (Object id : table.keySet()) {
-
-            String name = ((JLSElement)id).getElementName();
+            JLSElement e = (JLSElement) table.get(id);
+            String name = e.getElementName();
             if (name.equals("AndGate") || name.equals("NandGate") || name.equals("NorGate") || name.equals("OrGate") ||
                     name.equals("XorGate")) {
 
@@ -63,7 +74,7 @@ public class Main extends JPanel implements ActionListener {
                     case 0:
                         //Change to and
                         element = new objects.AndGate();
-                        String and[] = id.toString().split("//n");
+                        String and[] = e.toString().split("//n");
                         String andsplit[] = new String[9];
                         for(int i = 0; i < 9; i++) {
                             String temp2[] = and[i].split(" ");
@@ -82,7 +93,7 @@ public class Main extends JPanel implements ActionListener {
                     case 1:
                         //Change to Nand
                         element = new objects.NandGate();
-                        String nand[] = id.toString().split("//n");
+                        String nand[] = e.toString().split("//n");
                         String Nandsplit[] = new String[9];
                         for(int i = 0; i < 9; i++) {
                             String temp2[] = nand[i].split(" ");
@@ -101,7 +112,7 @@ public class Main extends JPanel implements ActionListener {
                     case 2:
                         //change to Nor
                         element = new objects.NorGate();
-                        String nor[] = id.toString().split("//n");
+                        String nor[] = e.toString().split("//n");
                         String norsplit[] = new String[9];
                         for(int i = 0; i < 9; i++) {
                             String temp2[] = nor[i].split(" ");
@@ -120,7 +131,7 @@ public class Main extends JPanel implements ActionListener {
                     case 3:
                         //change to or
                         element = new objects.OrGate();
-                        String or[] = id.toString().split("//n");
+                        String or[] = e.toString().split("//n");
                         String orsplit[] = new String[9];
                         for(int i = 0; i < 9; i++) {
                             String temp2[] = or[i].split(" ");
@@ -139,7 +150,7 @@ public class Main extends JPanel implements ActionListener {
                     case 4:
                         //change to xor
                         element = new objects.XorGate();
-                        String xor[] = id.toString().split("//n");
+                        String xor[] = e.toString().split("//n");
                         String xorsplit[] = new String[9];
                         for(int i = 0; i < 9; i++) {
                             String temp2[] = xor[i].split(" ");
@@ -171,7 +182,7 @@ public class Main extends JPanel implements ActionListener {
                         else {
                             element = new objects.XorGate();
                         }
-                        String defaults[] = id.toString().split("//n");
+                        String defaults[] = e.toString().split("//n");
                         String defaultsplit[] = new String[9];
                         for(int i = 0; i < 9; i++) {
                             String temp2[] = defaults[i].split(" ");
@@ -192,7 +203,7 @@ public class Main extends JPanel implements ActionListener {
 
             }
             else {
-                toreturn.put(((JLSElement)id).getId(), ((JLSElement)id));
+                toreturn.put(e.getId(), e);
             }
         }
         return toreturn;
