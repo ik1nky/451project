@@ -27,6 +27,9 @@ public class Main extends JPanel implements ActionListener {
         System.out.println(w.getWire());
         */
 
+        ScreenshotOrDie.makeScreenShot(l.getFile().getAbsolutePath());
+        System.out.println(l.getFilename());
+
         Saver s = new Saver();
 
         try {
