@@ -13,7 +13,7 @@ public class Splitter extends JLSElement {
     ArrayList<Pair> pairs;
 
     public Splitter() {
-        pairs = new ArrayList<Pair>();
+        pairs = new ArrayList<>();
     }
 
     public Splitter(int id, int x, int y, int width, int height, int bits, String orient, String noncontig, int tristate) {
