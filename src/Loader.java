@@ -237,7 +237,7 @@ public class Loader extends JPanel implements ActionListener {
     }
 
     public JLSElement getTypeObject(String type) {
-        if (type.equals("AndGate")) {
+        /*if (type.equals("AndGate")) {
             return new objects.AndGate();
         } else if (type.equals("InputPin")) {
             return new objects.InputPin();
@@ -263,6 +263,35 @@ public class Loader extends JPanel implements ActionListener {
             return new objects.XorGate();
         } else {
             return null;
+        }*/
+
+        switch(type){
+            case "AndGate":
+                return new objects.AndGate();
+            case "InputPin":
+                return new objects.InputPin();
+            case "JumpEnd":
+                return new objects.JumpEnd();
+            case "JumpStart":
+                return new objects.JumpStart();
+            case "NandGate":
+                return new objects.NandGate();
+            case "NorGate":
+                return new objects.NorGate();
+            case "NotGate":
+                return new objects.NotGate();
+            case "OrGate":
+                return new objects.OrGate();
+            case "OutputPin":
+                return new objects.OutputPin();
+            case "Splitter":
+                return new objects.Splitter();
+            case "WireEnd":
+                return new objects.WireEnd();
+            case "XorGate":
+                return new objects.XorGate();
+            default:
+                return null;
         }
     }
 
