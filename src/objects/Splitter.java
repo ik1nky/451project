@@ -81,7 +81,7 @@ public class Splitter extends JLSElement {
     public String toString() {
         String pairsString = "";
         for(Pair p : pairs) {
-           pairsString.concat(" " + p.toString() + "\n");
+           pairsString += " " + p.toString() + "\n";
         }
         return ("ELEMENT Splitter\n"
                 + " int id " + id + "\n"
