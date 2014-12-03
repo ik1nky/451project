@@ -1,6 +1,7 @@
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.Hashtable;
 
 /**
@@ -13,9 +14,14 @@ public class Main extends JPanel implements ActionListener {
         Loader l = new Loader();
         Hashtable table = l.load();
         System.out.println(table.size());
-        System.out.println(table.get(1).toString());
         Saver s = new Saver();
-        s.save(table);
+        try {
+            s.save(table, l.getCircuitName(), "test" + l.getFilename(), l.getFile().getCanonicalPath());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        System.exit(0);
 
     }
 

@@ -17,8 +17,4 @@ public class NotGate extends Gate {
     public NotGate() {
     }
 
-    public String toString() {
-        return "ELEMENT NotGate\n" + super.toString();
-    }
-
 }
