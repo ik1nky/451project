@@ -81,7 +81,7 @@ public class Splitter extends JLSElement {
     public String toString() {
         String pairsString = "";
         for(Pair p : pairs) {
-           pairsString.concat(p.toString());
+           pairsString.concat(" " + p.toString() + "\n");
         }
         return ("ELEMENT Splitter\n"
                 + " int id " + id + "\n"
@@ -93,7 +93,7 @@ public class Splitter extends JLSElement {
                 + " String orient " + orient + "\n"
                 + " String noncontig " + noncontig + "\n"
                 + " int tristate " + tristate + "\n"
-                + " " + pairsString + "\n"
+                + pairsString
                 + "END\n"
         );
     }
