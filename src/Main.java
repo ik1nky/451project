@@ -16,8 +16,12 @@ public class Main extends JPanel implements ActionListener {
 
     public static void main(String[] args) {
         //input the file....
+
+
         Loader l = new Loader();
         Hashtable table = l.load();
+
+
         /*
         System.out.println(table.size());
         System.out.println(table.get(0).toString());
@@ -27,6 +31,8 @@ public class Main extends JPanel implements ActionListener {
         System.out.println(w.getWire());
         */
 
+        /*
+
         Saver s = new Saver();
 
         try {
@@ -35,9 +41,11 @@ public class Main extends JPanel implements ActionListener {
             e.printStackTrace();
         }
 
-        Main fuck = new Main();
+        Main test = new Main();
 
-        Hashtable random = fuck.randomizer(table);
+        Hashtable random = test.randomizer(table);
+
+        test.truthTable(4);
 
         try {
             s.save(random, l.getCircuitName(), "test" + l.getFilename(), l.getFile().getCanonicalPath() + "LULZ");
@@ -45,7 +53,10 @@ public class Main extends JPanel implements ActionListener {
             e.printStackTrace();
         }
 
-
+        */
+        Main test = new Main();
+        System.out.println(test.getNumberOfInputs(table));
+        //test.truthTable(test.getNumberOfInputs(table));
         System.exit(0);
 
     }
@@ -56,6 +67,177 @@ public class Main extends JPanel implements ActionListener {
     }
 
 
+
+    public int getNumberOfInputs(Hashtable table) {
+        int count = 0;
+        for (Object id : table.keySet()) {
+            JLSElement e = (JLSElement) table.get(id);
+            //String name = e.getElementName();
+            if (e.getElementName().toLowerCase().equals("inputpin")) {
+                count += ((InputPin) e).getBits();
+            }
+        }
+        return count;
+    }
+
+
+
+    public void truthTable(int num) {
+        NoIdea idea = new NoIdea();
+
+        String ary[] = idea.getTruthTable();
+        String table = "";
+        switch(num) {
+            case 2:
+                table += "Bits\na b    Output\n";
+                int j = 0;
+                for(int k = 0; k < 4; k++) {
+                    if (j <= ary.length - 1 && ary[j] != null) {
+                        if (Integer.parseInt(ary[j]) != k) {
+                            int binary[] = new int[25];
+                            int index = 0;
+                            int tempint = k;
+                            while (tempint > 0) {
+                                binary[index++] = tempint % 2;
+                                tempint = tempint / 2;
+                            }
+                            for (int d = 1; d >= 0; d--) {
+                                table += binary[d] + " ";
+                            }
+                            table += "   0\n";
+                        }
+                        else {
+                            int binary[] = new int[25];
+                            int index = 0;
+                            int tempint = Integer.parseInt(ary[j]);
+                            while (tempint > 0) {
+                                binary[index++] = tempint % 2;
+                                tempint = tempint / 2;
+                            }
+                            for (int d = 1; d >= 0; d--) {
+                                table += binary[d] + " ";
+                            }
+                            table += "   1\n";
+                            j++;
+                        }
+                    }
+                    else {
+                        int binary[] = new int[25];
+                        int index = 0;
+                        int tempint = k;
+                        while (tempint > 0) {
+                            binary[index++] = tempint % 2;
+                            tempint = tempint / 2;
+                        }
+                        for (int d = 1; d >= 0; d--) {
+                            table += binary[d] + " ";
+                        }
+                        table += "   0\n";
+                    }
+                }
+                break;
+
+            case 3:
+                table += "Bits\na b c    Output\n";
+                int l = 0;
+                for(int k = 0; k < 8; k++) {
+                    if (l <= ary.length - 1 && ary[l] != null) {
+                        if (Integer.parseInt(ary[l]) != k) {
+                            int binary[] = new int[25];
+                            int index = 0;
+                            int tempint = k;
+                            while (tempint > 0) {
+                                binary[index++] = tempint % 2;
+                                tempint = tempint / 2;
+                            }
+                            for (int d = 2; d >= 0; d--) {
+                                table += binary[d] + " ";
+                            }
+                            table += "     0\n";
+                        }
+                        else {
+                            int binary[] = new int[25];
+                            int index = 0;
+                            int tempint = Integer.parseInt(ary[l]);
+                            while (tempint > 0) {
+                                binary[index++] = tempint % 2;
+                                tempint = tempint / 2;
+                            }
+                            for (int d = 2; d >= 0; d--) {
+                                table += binary[d] + " ";
+                            }
+                            table += "     1\n";
+                            l++;
+                        }
+                    }
+                    else {
+                        int binary[] = new int[25];
+                        int index = 0;
+                        int tempint = k;
+                        while (tempint > 0) {
+                            binary[index++] = tempint % 2;
+                            tempint = tempint / 2;
+                        }
+                        for (int d = 2; d >= 0; d--) {
+                            table += binary[d] + " ";
+                        }
+                        table += "     0\n";
+                    }
+                }
+                break;
+
+            case 4:
+                table += "Bits\na b c d    Output\n";
+
+                int m = 0;
+                for(int k = 0; k < 16; k++) {
+                    if (m <= ary.length - 1 && ary[m] != null) {
+                        if (Integer.parseInt(ary[m]) != k) {
+                            int binary[] = new int[25];
+                            int index = 0;
+                            int tempint = k;
+                            while (tempint > 0) {
+                                binary[index++] = tempint % 2;
+                                tempint = tempint / 2;
+                            }
+                            for (int d = 3; d >= 0; d--) {
+                                table += binary[d] + " ";
+                            }
+                            table += "       0\n";
+                        }
+                        else {
+                            int binary[] = new int[25];
+                            int index = 0;
+                            int tempint = Integer.parseInt(ary[m]);
+                            while (tempint > 0) {
+                                binary[index++] = tempint % 2;
+                                tempint = tempint / 2;
+                            }
+                            for (int d = 3; d >= 0; d--) {
+                                table += binary[d] + " ";
+                            }
+                            table += "       1\n";
+                            m++;
+                        }
+                    }
+                    else {
+                        int binary[] = new int[25];
+                        int index = 0;
+                        int tempint = k;
+                        while (tempint > 0) {
+                            binary[index++] = tempint % 2;
+                            tempint = tempint / 2;
+                        }
+                        for (int d = 3; d >= 0; d--) {
+                            table += binary[d] + " ";
+                        }
+                        table += "       0\n";
+                    }
+                }
+                break;
+        }
+        JOptionPane.showMessageDialog(null, table);
+    }
 
     public Hashtable randomizer(Hashtable table) {
         JLSElement element;
@@ -217,7 +399,6 @@ public class Main extends JPanel implements ActionListener {
                         break;
                 }
                 toreturn.put(element.getId(), element);
-                //
             }
             else {
                 toreturn.put(e.getId(), e);
