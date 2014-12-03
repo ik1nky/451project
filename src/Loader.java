@@ -21,6 +21,9 @@ public class Loader extends JPanel implements ActionListener {
 
     ArrayList<JLSElement> elements = new ArrayList<JLSElement>();
     Hashtable<Integer, JLSElement> hashTable = new Hashtable<Integer, JLSElement>();
+    String filename;
+    String circuitName;
+    File file;
 
     public Hashtable load() {
         JFileChooser fc = new JFileChooser(".");
@@ -29,13 +32,11 @@ public class Loader extends JPanel implements ActionListener {
         fc.setFileFilter(filter);
         int returnValue = fc.showOpenDialog(main);
         if (returnValue == 0) {
-            File file;
-            String filename;
-            String circName;
             try {
 
                 file = fc.getSelectedFile();
                 filename = file.getName().trim();
+                //System.out.println("Filename: " + filename + ", file: " + file.getCanonicalPath());
                 FileInputStream input = new FileInputStream(file);
                 ZipInputStream circ = new ZipInputStream(input);
 
@@ -53,9 +54,9 @@ public class Loader extends JPanel implements ActionListener {
                     System.exit(1);
                 } else {
 
-                    circName = scan.next();
+                    circuitName = scan.next();
                     JLSElement element;
-                    System.out.println("Circuit Name: " + circName);
+                    System.out.println("Circuit Name: " + circuitName);
                     while (scan.next().equals("ELEMENT")) {
                         //System.out.println(scan.nextLine());
                         String componentType = scan.next();
@@ -236,7 +237,7 @@ public class Loader extends JPanel implements ActionListener {
     }
 
     public JLSElement getTypeObject(String type) {
-        if (type.equals("AndGate")) {
+        /*if (type.equals("AndGate")) {
             return new objects.AndGate();
         } else if (type.equals("InputPin")) {
             return new objects.InputPin();
@@ -262,8 +263,55 @@ public class Loader extends JPanel implements ActionListener {
             return new objects.XorGate();
         } else {
             return null;
+        }*/
+
+        switch(type){
+            case "AndGate":
+                return new objects.AndGate();
+            case "InputPin":
+                return new objects.InputPin();
+            case "JumpEnd":
+                return new objects.JumpEnd();
+            case "JumpStart":
+                return new objects.JumpStart();
+            case "NandGate":
+                return new objects.NandGate();
+            case "NorGate":
+                return new objects.NorGate();
+            case "NotGate":
+                return new objects.NotGate();
+            case "OrGate":
+                return new objects.OrGate();
+            case "OutputPin":
+                return new objects.OutputPin();
+            case "Splitter":
+                return new objects.Splitter();
+            case "WireEnd":
+                return new objects.WireEnd();
+            case "XorGate":
+                return new objects.XorGate();
+            default:
+                return null;
         }
     }
+
+    public String getFilename() {
+        return filename;
+    }
+
+    public Hashtable<Integer, JLSElement> getHashTable() {
+        return hashTable;
+    }
+
+    public String getCircuitName() {
+        return circuitName;
+    }
+
+    public File getFile() {
+        return file;
+    }
+    
+
     @Override
     public void actionPerformed(ActionEvent e)
     {

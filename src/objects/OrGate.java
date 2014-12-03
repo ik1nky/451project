@@ -14,8 +14,4 @@ public class OrGate extends Gate {
 
     public OrGate() {
     }
-
-    public String toString() {
-        return "ELEMENT OrGate\n" + super.toString();
-    }
 }

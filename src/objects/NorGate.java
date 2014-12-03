@@ -14,8 +14,4 @@ public class NorGate extends Gate {
 
     public NorGate() {
     }
-
-    public String toString() {
-        return "ELEMENT NorGate\n" + super.toString();
-    }
 }

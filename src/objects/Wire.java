@@ -70,3 +70,17 @@ public class Wire extends JLSElement {
 
 
 }
+
+
+/*
+ELEMENT WireEnd
+ int id 6
+ int x 84
+ int y 60
+ int width 6
+ int height 6
+ String put "3"
+ ref attach 4
+ ref wire 7
+END
+ */

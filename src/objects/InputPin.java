@@ -53,4 +53,32 @@ public class InputPin extends JLSElement {
 
     //int watch = 0  assumed
     //String orient = "RIGHT" assumed
+
+
+    public String toString(){
+        return ("ELEMENT InputPin\n"
+                + " int id " + id + "\n"
+                + " int x " + x + "\n"
+                + " int y " + y + "\n"
+                + " int width " + width + "\n"
+                + " int height " + height + "\n"
+                + " String name " + name + "\n"
+                + " int bits " + bits + "\n"
+                + " int watch " + watch + "\n"
+                + " String orient " + orient + "\n"
+                + "END\n"
+        );
+
+        /*ELEMENT InputPin
+ int id 15
+ int x 12
+ int y 24
+ int width 48
+ int height 24
+ String name "Input"
+ int bits 4
+ int watch 0
+ String orient "RIGHT"
+END*/
+    }
 }

@@ -77,5 +77,43 @@ public class Splitter extends JLSElement {
         }
         return false;
     }
+
+    public String toString() {
+        String pairsString = "";
+        for(Pair p : pairs) {
+           pairsString.concat(p.toString());
+        }
+        return ("ELEMENT Splitter\n"
+                + " int id " + id + "\n"
+                + " int x " + x + "\n"
+                + " int y " + y + "\n"
+                + " int width " + width + "\n"
+                + " int height " + height + "\n"
+                + " int bits " + bits + "\n"
+                + " String orient " + orient + "\n"
+                + " String noncontig " + noncontig + "\n"
+                + " int tristate " + tristate + "\n"
+                + " " + pairsString + "\n"
+                + "END\n"
+        );
+    }
 }
+
+/*
+ELEMENT Splitter
+ int id 4
+ int x 60
+ int y 12
+ int width 24
+ int height 60
+ int bits 4
+ String orient "RIGHT"
+ String noncontig "true"
+ int tristate 0
+ pair 0 0
+ pair 1 1
+ pair 2 2
+ pair 3 3
+END
+ */
 

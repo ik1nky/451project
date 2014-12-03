@@ -56,7 +56,8 @@ public class Gate extends JLSElement {
     }
 
     public String toString() {
-        return (" int id " + id + "\n"
+        return ("ELEMENT " + this.getClass().getSimpleName() + "\n"
+                + " int id " + id + "\n"
                 + " int x " + x + "\n"
                 + " int y " + y + "\n"
                 + " int width " + width + "\n"
