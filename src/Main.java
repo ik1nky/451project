@@ -70,15 +70,31 @@ public class Main extends JPanel implements ActionListener {
 
                 double randomnumber = Math.random() * 5;
                 int rand = (int)randomnumber % 5;
+
+                /*
+                element = new objects.NorGate();
+                String nor[] = e.toString().split("\\n");
+                String norsplit[] = new String[nor.length - 1];
+
+
+                for(int i = 1; i < nor.length - 1; i++) {
+                    String temp2[] = nor[i].split(" ");
+                    norsplit[i - 1] = temp2[3];
+                }
+
+                for (int i = 0; i < norsplit.length; i++){
+                    System.out.println(norsplit[i]);
+                }
+                */
                 switch (rand) {
                     case 0:
                         //Change to and
                         element = new objects.AndGate();
-                        String and[] = e.toString().split("//n");
+                        String and[] = e.toString().split("\\n");
                         String andsplit[] = new String[10];
-                        for(int i = 1; i < 10; i++) {
+                        for(int i = 1; i < and.length - 1; i++) {
                             String temp2[] = and[i].split(" ");
-                            andsplit[i - 1] = temp2[2];
+                            andsplit[i - 1] = temp2[3];
                         }
                         element.setId(Integer.parseInt(andsplit[0]));
                         element.setX(Integer.parseInt(andsplit[1]));
@@ -93,11 +109,11 @@ public class Main extends JPanel implements ActionListener {
                     case 1:
                         //Change to Nand
                         element = new objects.NandGate();
-                        String nand[] = e.toString().split("//n");
+                        String nand[] = e.toString().split("\\n");
                         String Nandsplit[] = new String[10];
-                        for(int i = 1; i < 10; i++) {
+                        for(int i = 1; i < nand.length - 1; i++) {
                             String temp2[] = nand[i].split(" ");
-                            Nandsplit[i - 1] = temp2[2];
+                            Nandsplit[i - 1] = temp2[3];
                         }
                         element.setId(Integer.parseInt(Nandsplit[0]));
                         element.setX(Integer.parseInt(Nandsplit[1]));
@@ -112,12 +128,13 @@ public class Main extends JPanel implements ActionListener {
                     case 2:
                         //change to Nor
                         element = new objects.NorGate();
-                        String nor[] = e.toString().split("//n");
-                        String norsplit[] = new String[10];
-                        for(int i = 1; i < 10; i++) {
+                        String nor[] = e.toString().split("\\n");
+                        String norsplit[] = new String[nor.length];
+                        for(int i = 1; i < nor.length - 1; i++) {
                             String temp2[] = nor[i].split(" ");
-                            norsplit[i - 1] = temp2[2];
+                            norsplit[i - 1] = temp2[3];
                         }
+
                         element.setId(Integer.parseInt(norsplit[0]));
                         element.setX(Integer.parseInt(norsplit[1]));
                         element.setY(Integer.parseInt(norsplit[2]));
@@ -131,11 +148,11 @@ public class Main extends JPanel implements ActionListener {
                     case 3:
                         //change to or
                         element = new objects.OrGate();
-                        String or[] = e.toString().split("//n");
+                        String or[] = e.toString().split("\\n");
                         String orsplit[] = new String[10];
-                        for(int i = 1; i < 10; i++) {
+                        for(int i = 1; i < or.length - 1; i++) {
                             String temp2[] = or[i].split(" ");
-                            orsplit[i - 1] = temp2[2];
+                            orsplit[i - 1] = temp2[3];
                         }
                         element.setId(Integer.parseInt(orsplit[0]));
                         element.setX(Integer.parseInt(orsplit[1]));
@@ -150,11 +167,11 @@ public class Main extends JPanel implements ActionListener {
                     case 4:
                         //change to xor
                         element = new objects.XorGate();
-                        String xor[] = e.toString().split("//n");
+                        String xor[] = e.toString().split("\\n");
                         String xorsplit[] = new String[10];
-                        for(int i = 1; i < 10; i++) {
+                        for(int i = 1; i < xor.length - 1; i++) {
                             String temp2[] = xor[i].split(" ");
-                            xorsplit[i - 1] = temp2[2];
+                            xorsplit[i - 1] = temp2[3];
                         }
                         element.setId(Integer.parseInt(xorsplit[0]));
                         element.setX(Integer.parseInt(xorsplit[1]));
@@ -182,11 +199,11 @@ public class Main extends JPanel implements ActionListener {
                         else {
                             element = new objects.XorGate();
                         }
-                        String defaults[] = e.toString().split("//n");
+                        String defaults[] = e.toString().split("\\n");
                         String defaultsplit[] = new String[10];
-                        for(int i = 1; i < 10; i++) {
+                        for(int i = 1; i < defaults.length - 1; i++) {
                             String temp2[] = defaults[i].split(" ");
-                            defaultsplit[i - 1] = temp2[2];
+                            defaultsplit[i - 1] = temp2[3];
                         }
                         element.setId(Integer.parseInt(defaultsplit[0]));
                         element.setX(Integer.parseInt(defaultsplit[1]));

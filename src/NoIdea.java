@@ -7,7 +7,7 @@ import java.io.InputStreamReader;
  */
 public class NoIdea {
     public static void main(String[] args){
-        String iHateYou = "/Users/jackrosenhauer/Dropbox/Git/451project/Test/ourScript.bash";
+        String iHateYou = "ourScript.bash";
         String[] myArray = {iHateYou};
         try {
             Runtime rt = Runtime.getRuntime();
