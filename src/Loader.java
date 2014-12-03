@@ -23,6 +23,7 @@ public class Loader extends JPanel implements ActionListener {
     Hashtable<Integer, JLSElement> hashTable = new Hashtable<Integer, JLSElement>();
     String filename;
     String circuitName;
+    File file;
 
     public Hashtable load() {
         JFileChooser fc = new JFileChooser(".");
@@ -31,12 +32,11 @@ public class Loader extends JPanel implements ActionListener {
         fc.setFileFilter(filter);
         int returnValue = fc.showOpenDialog(main);
         if (returnValue == 0) {
-            File file;
             try {
 
                 file = fc.getSelectedFile();
                 filename = file.getName().trim();
-                System.out.println("Filename: " + filename + ", file: " + file.getCanonicalPath());
+                //System.out.println("Filename: " + filename + ", file: " + file.getCanonicalPath());
                 FileInputStream input = new FileInputStream(file);
                 ZipInputStream circ = new ZipInputStream(input);
 
@@ -306,6 +306,11 @@ public class Loader extends JPanel implements ActionListener {
     public String getCircuitName() {
         return circuitName;
     }
+
+    public File getFile() {
+        return file;
+    }
+    
 
     @Override
     public void actionPerformed(ActionEvent e)

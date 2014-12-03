@@ -12,19 +12,18 @@ import java.util.zip.ZipOutputStream;
  * Created by jacksrosenhauerii on 12/2/14.
  */
 public class Saver {
-    public static boolean save(Hashtable hashtable, String circuitName, String filename){
-        System.out.println("Saving " + circuitName + " in the file " + filename);
+    public static boolean save(Hashtable hashtable, String circuitName, String filename, String path){
+        System.out.println("Saving " + circuitName + " in the file " + filename + ". Path: " + path + ".");
+
         try {
-            ZipOutputStream out = new ZipOutputStream(new FileOutputStream(filename));
+            ZipOutputStream out = new ZipOutputStream(new FileOutputStream(path + "test"));
             out.putNextEntry(new ZipEntry("JLSCircuit"));
             PrintWriter output = new PrintWriter(out);
-
-
 
             output.println("CIRCUIT " + circuitName);
 
             for (Object id : hashtable.keySet()){
-                output.println(hashtable.get(id));
+                output.println(hashtable.get(id).toString());
             }
 
             output.println("ENDCIRCUIT");
