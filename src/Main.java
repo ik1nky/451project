@@ -14,6 +14,7 @@ public class Main extends JPanel implements ActionListener {
         Loader l = new Loader();
         Hashtable table = l.load();
         System.out.println(table.size());
+        System.out.println(table.get(1).toString());
         Saver s = new Saver();
         try {
             s.save(table, l.getCircuitName(), "test" + l.getFilename(), l.getFile().getCanonicalPath());

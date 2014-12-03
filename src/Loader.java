@@ -25,7 +25,6 @@ public class Loader extends JPanel implements ActionListener {
     String circuitName;
     File file;
 
-
     public Hashtable load() {
         JFileChooser fc = new JFileChooser(".");
         JFrame main = new JFrame();
@@ -282,6 +281,7 @@ public class Loader extends JPanel implements ActionListener {
     public File getFile() {
         return file;
     }
+    
 
     @Override
     public void actionPerformed(ActionEvent e)
