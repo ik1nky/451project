@@ -20,8 +20,6 @@ public class Saver {
             out.putNextEntry(new ZipEntry("JLSCircuit"));
             PrintWriter output = new PrintWriter(out);
 
-
-
             output.println("CIRCUIT " + circuitName);
 
             for (Object id : hashtable.keySet()){
