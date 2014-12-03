@@ -11,7 +11,6 @@ public class NoIdea {
         String[] myArray = {"/bin/sh", "-c", "Test/jlsCircuitTester -m 451 Files/fuck.jls Test/umm | grep \"Errors detected\" | awk -F\"-\" '{print $2}' | awk -F\":\" '{print $1}'"};
         try {
             Runtime rt = Runtime.getRuntime();
-            //Process p = rt.exec("Test/jlsCircuitTester -m 451 Files/fuck.jls Test/umm  \\| grep a");
             Process p = rt.exec(myArray);
             BufferedReader stdInput = new BufferedReader(new InputStreamReader(p.getInputStream()));
 
