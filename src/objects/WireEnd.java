@@ -69,15 +69,12 @@ public class WireEnd extends JLSElement {
             putString = " String put = " + put + "\n";
         for(Integer i : wire) {
             wireString += " ref wire " + i + "\n";
-            System.out.println(i);
             wireString.concat(" ref wire " + i + "\n");
         }
         for(Integer i : attach) {
             attachString += " ref attach " + i + "\n";
         }
 
-        System.out.println(wireString);
-        System.out.println(attachString);
         return ( "ELEMENT WireEnd\n"
                 + " int id " + id + "\n"
                 + " int x " + x + "\n"
