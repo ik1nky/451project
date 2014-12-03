@@ -51,4 +51,32 @@ public class OutputPin extends JLSElement {
     public void setOrient(String orient) {
         this.orient = orient;
     }
+
+    public String toString() {
+        return ("ELEMENT OutputPin\n"
+                + " int id " + id + "\n"
+                + " int x " + x + "\n"
+                + " int y " + y + "\n"
+                + " int width " + width + "\n"
+                + " int height " + height + "\n"
+                + " String name " + name + "\n"
+                + " int bits " + bits + "\n"
+                + " int watch " + watch + "\n"
+                + " String orient " + orient + "\n"
+                + "END\n"
+        );
+    }
 }
+/*
+ELEMENT OutputPin
+ int id 14
+ int x 372
+ int y 84
+ int width 60
+ int height 24
+ String name "Output"
+ int bits 1
+ int watch 0
+ String orient "RIGHT"
+END
+*/

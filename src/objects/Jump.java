@@ -49,3 +49,29 @@ public class Jump extends JLSElement {
         this.orientation = orientation;
     }
 }
+
+
+/*
+ELEMENT JumpStart
+ int id 20
+ int x 84
+ int y 36
+ int width 60
+ int height 0
+ String name "InputB"
+ int bits 1
+ int watch 0
+ String orientation "LEFT"
+END
+
+ELEMENT JumpEnd
+ int id 22
+ int x 264
+ int y 60
+ int width 60
+ int height 0
+ String name "InputA"
+ int bits 1
+ String orientation "RIGHT"
+END
+ */

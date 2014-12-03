@@ -15,7 +15,7 @@ public class Main extends JPanel implements ActionListener {
         System.out.println(table.size());
         System.out.println(table.get(1).toString());
         Saver s = new Saver();
-        s.save(table);
+        s.save(table, "test" + l.getCircuitName(), l.getFilename());
 
     }
 

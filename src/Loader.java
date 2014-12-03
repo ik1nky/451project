@@ -21,6 +21,8 @@ public class Loader extends JPanel implements ActionListener {
 
     ArrayList<JLSElement> elements = new ArrayList<JLSElement>();
     Hashtable<Integer, JLSElement> hashTable = new Hashtable<Integer, JLSElement>();
+    String filename;
+    String circuitName;
 
     public Hashtable load() {
         JFileChooser fc = new JFileChooser(".");
@@ -30,12 +32,11 @@ public class Loader extends JPanel implements ActionListener {
         int returnValue = fc.showOpenDialog(main);
         if (returnValue == 0) {
             File file;
-            String filename;
-            String circName;
             try {
 
                 file = fc.getSelectedFile();
                 filename = file.getName().trim();
+                System.out.println("Filename: " + filename + ", file: " + file.getCanonicalPath());
                 FileInputStream input = new FileInputStream(file);
                 ZipInputStream circ = new ZipInputStream(input);
 
@@ -53,9 +54,9 @@ public class Loader extends JPanel implements ActionListener {
                     System.exit(1);
                 } else {
 
-                    circName = scan.next();
+                    circuitName = scan.next();
                     JLSElement element;
-                    System.out.println("Circuit Name: " + circName);
+                    System.out.println("Circuit Name: " + circuitName);
                     while (scan.next().equals("ELEMENT")) {
                         //System.out.println(scan.nextLine());
                         String componentType = scan.next();
@@ -264,6 +265,19 @@ public class Loader extends JPanel implements ActionListener {
             return null;
         }
     }
+
+    public String getFilename() {
+        return filename;
+    }
+
+    public Hashtable<Integer, JLSElement> getHashTable() {
+        return hashTable;
+    }
+
+    public String getCircuitName() {
+        return circuitName;
+    }
+
     @Override
     public void actionPerformed(ActionEvent e)
     {

@@ -5,9 +5,4 @@ public class XorGate extends Gate {
 
     public XorGate() {
     }
-
-    public String toString() {
-        return "ELEMENT XorGate\n" + super.toString();
-    }
-
 }
