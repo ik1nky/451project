@@ -7,7 +7,7 @@ import java.io.InputStreamReader;
  */
 public class NoIdea {
     public static void main(String[] args){
-        String iHateYou = "/Users/jacksrosenhauerii/Dropbox/Git/451project/Test/ourScript.bash";
+        String iHateYou = "Test/ourScript.bash";
         String[] myArray = {"/bin/sh", "-c", "Test/jlsCircuitTester -m 451 Files/fuck.jls Test/umm | grep \"Errors detected\" | awk -F\"-\" '{print $2}' | awk -F\":\" '{print $1}'"};
         try {
             Runtime rt = Runtime.getRuntime();
