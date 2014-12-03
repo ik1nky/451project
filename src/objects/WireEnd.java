@@ -64,6 +64,9 @@ public class WireEnd extends JLSElement {
     public String toString(){
         String wireString = "";
         String attachString = "";
+        String putString = "";
+        if(put != null)
+            putString = " String put = " + put + "\n";
         for(Integer i : wire) {
             wireString += " ref wire " + i + "\n";
             System.out.println(i);
@@ -81,7 +84,7 @@ public class WireEnd extends JLSElement {
                 + " int y " + y + "\n"
                 + " int width " + width + "\n"
                 + " int height " + height + "\n"
-                + " String put " + put + "\n"
+                + putString
                 + attachString
                 + wireString
                 + "END\n"
