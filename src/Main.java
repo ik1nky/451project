@@ -75,10 +75,10 @@ public class Main extends JPanel implements ActionListener {
                         //Change to and
                         element = new objects.AndGate();
                         String and[] = e.toString().split("//n");
-                        String andsplit[] = new String[9];
-                        for(int i = 0; i < 9; i++) {
+                        String andsplit[] = new String[10];
+                        for(int i = 1; i < 10; i++) {
                             String temp2[] = and[i].split(" ");
-                            andsplit[i] = temp2[2];
+                            andsplit[i - 1] = temp2[2];
                         }
                         element.setId(Integer.parseInt(andsplit[0]));
                         element.setX(Integer.parseInt(andsplit[1]));
@@ -94,10 +94,10 @@ public class Main extends JPanel implements ActionListener {
                         //Change to Nand
                         element = new objects.NandGate();
                         String nand[] = e.toString().split("//n");
-                        String Nandsplit[] = new String[9];
-                        for(int i = 0; i < 9; i++) {
+                        String Nandsplit[] = new String[10];
+                        for(int i = 1; i < 10; i++) {
                             String temp2[] = nand[i].split(" ");
-                            Nandsplit[i] = temp2[2];
+                            Nandsplit[i - 1] = temp2[2];
                         }
                         element.setId(Integer.parseInt(Nandsplit[0]));
                         element.setX(Integer.parseInt(Nandsplit[1]));
@@ -113,10 +113,10 @@ public class Main extends JPanel implements ActionListener {
                         //change to Nor
                         element = new objects.NorGate();
                         String nor[] = e.toString().split("//n");
-                        String norsplit[] = new String[9];
-                        for(int i = 0; i < 9; i++) {
+                        String norsplit[] = new String[10];
+                        for(int i = 1; i < 10; i++) {
                             String temp2[] = nor[i].split(" ");
-                            norsplit[i] = temp2[2];
+                            norsplit[i - 1] = temp2[2];
                         }
                         element.setId(Integer.parseInt(norsplit[0]));
                         element.setX(Integer.parseInt(norsplit[1]));
@@ -132,10 +132,10 @@ public class Main extends JPanel implements ActionListener {
                         //change to or
                         element = new objects.OrGate();
                         String or[] = e.toString().split("//n");
-                        String orsplit[] = new String[9];
-                        for(int i = 0; i < 9; i++) {
+                        String orsplit[] = new String[10];
+                        for(int i = 1; i < 10; i++) {
                             String temp2[] = or[i].split(" ");
-                            orsplit[i] = temp2[2];
+                            orsplit[i - 1] = temp2[2];
                         }
                         element.setId(Integer.parseInt(orsplit[0]));
                         element.setX(Integer.parseInt(orsplit[1]));
@@ -151,10 +151,10 @@ public class Main extends JPanel implements ActionListener {
                         //change to xor
                         element = new objects.XorGate();
                         String xor[] = e.toString().split("//n");
-                        String xorsplit[] = new String[9];
-                        for(int i = 0; i < 9; i++) {
+                        String xorsplit[] = new String[10];
+                        for(int i = 1; i < 10; i++) {
                             String temp2[] = xor[i].split(" ");
-                            xorsplit[i] = temp2[2];
+                            xorsplit[i - 1] = temp2[2];
                         }
                         element.setId(Integer.parseInt(xorsplit[0]));
                         element.setX(Integer.parseInt(xorsplit[1]));
@@ -183,10 +183,10 @@ public class Main extends JPanel implements ActionListener {
                             element = new objects.XorGate();
                         }
                         String defaults[] = e.toString().split("//n");
-                        String defaultsplit[] = new String[9];
-                        for(int i = 0; i < 9; i++) {
+                        String defaultsplit[] = new String[10];
+                        for(int i = 1; i < 10; i++) {
                             String temp2[] = defaults[i].split(" ");
-                            defaultsplit[i] = temp2[2];
+                            defaultsplit[i - 1] = temp2[2];
                         }
                         element.setId(Integer.parseInt(defaultsplit[0]));
                         element.setX(Integer.parseInt(defaultsplit[1]));
@@ -200,7 +200,7 @@ public class Main extends JPanel implements ActionListener {
                         break;
                 }
                 toreturn.put(element.getId(), element);
-
+                //
             }
             else {
                 toreturn.put(e.getId(), e);
