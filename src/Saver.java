@@ -23,10 +23,10 @@ public class Saver {
             output.println("CIRCUIT " + circuitName);
 
             for (Object id : hashtable.keySet()){
-                output.println(hashtable.get(id).toString());
+                output.print(hashtable.get(id).toString());
             }
 
-            output.println("ENDCIRCUIT");
+            output.print("ENDCIRCUIT");
             output.close();
 
         } catch (FileNotFoundException e) {
