@@ -116,7 +116,7 @@ public class Loader extends JPanel implements ActionListener {
                                         ((JumpEnd)element).setName(value);
                                     }
                                     else {
-                                        printParseError(componentType,element);
+                                        printParseError(componentType, element);
                                     }
                                     break;
                                 case "bits":
@@ -139,7 +139,7 @@ public class Loader extends JPanel implements ActionListener {
                                     if(element instanceof Gate) {
                                         ((Gate) element).setDelay(Integer.parseInt(value));
                                     } else {
-                                        printParseError(componentType,element);
+                                        printParseError(componentType, element);
                                     }
                                     break;
                                 case "orientation":
@@ -148,7 +148,7 @@ public class Loader extends JPanel implements ActionListener {
                                     } else if (element instanceof Jump) {
                                         ((Jump) element).setOrientation(value);
                                     } else {
-                                        printParseError(componentType,element);
+                                        printParseError(componentType, element);
                                     }
                                     break;
                                 case "numinputs":
@@ -162,14 +162,14 @@ public class Loader extends JPanel implements ActionListener {
                                     if(element instanceof Splitter) {
                                         ((Splitter) element).setTristate(Integer.parseInt(value));
                                     } else {
-                                        printParseError(componentType,element);
+                                        printParseError(componentType, element);
                                     }
                                     break;
                                 case "noncontig":
                                     if(element instanceof Splitter) {
                                         ((Splitter) element).setNoncontig(value);
                                     } else {
-                                        printParseError(componentType,element);
+                                        printParseError(componentType, element);
                                     }
                                     break;
                                 case "orient":
@@ -187,21 +187,21 @@ public class Loader extends JPanel implements ActionListener {
                                     if(element instanceof WireEnd) {
                                         ((WireEnd) element).setPut(value);
                                     } else {
-                                        printParseError(componentType,element);
+                                        printParseError(componentType, element);
                                     }
                                     break;
                                 case "attach":
                                     if(element instanceof WireEnd) {
                                         ((WireEnd) element).addAttach(Integer.parseInt(value));
                                     } else {
-                                        printParseError(componentType,element);
+                                        printParseError(componentType, element);
                                     }
                                     break;
                                 case "wire":
                                     if(element instanceof WireEnd) {
                                         ((WireEnd) element).addWire(Integer.parseInt(value));
                                     } else {
-                                        printParseError(componentType,element);
+                                        printParseError(componentType, element);
                                     }
                                     break;
                                 case "watch":
@@ -213,7 +213,7 @@ public class Loader extends JPanel implements ActionListener {
                                         ((InputPin) element).setWatch(Integer.parseInt(value));
 
                                     } else {
-                                        printParseError(componentType,element);
+                                        printParseError(componentType, element);
                                     }
                                     break;
                                 default:

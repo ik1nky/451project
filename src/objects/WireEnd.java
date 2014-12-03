@@ -50,7 +50,7 @@ public class WireEnd extends JLSElement {
 
     public void addAttach(int wireId) {
         //System.out.println("Adding attach: " + wireId);
-        wire.add(wireId);
+        attach.add(wireId);
     }
 
     public void removeAttach(int wireId) {
@@ -65,11 +65,15 @@ public class WireEnd extends JLSElement {
         String wireString = "";
         String attachString = "";
         for(Integer i : wire) {
+            System.out.println(i);
             wireString.concat(" ref wire " + i + "\n");
         }
         for(Integer i : attach) {
             attachString.concat( " ref attach " + i + "\n");
         }
+
+        System.out.println(wireString);
+        System.out.println(attachString);
         return ( "ELEMENT WireEnd\n"
                 + " int id " + id + "\n"
                 + " int x " + x + "\n"

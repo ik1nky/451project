@@ -19,14 +19,20 @@ public class Main extends JPanel implements ActionListener {
         Loader l = new Loader();
         Hashtable table = l.load();
         System.out.println(table.size());
-        System.out.println(table.get(1).toString());
+        System.out.println(table.get(0).toString());
+
+        WireEnd w = (WireEnd) table.get(0);
+        System.out.println(w.getAttach());
+        System.out.println(w.getWire());
         Saver s = new Saver();
+
+        /*
         try {
             s.save(table, l.getCircuitName(), "test" + l.getFilename(), l.getFile().getCanonicalPath());
         } catch (IOException e) {
             e.printStackTrace();
         }
-
+        */
         System.exit(0);
 
     }
