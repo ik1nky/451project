@@ -53,4 +53,8 @@ public class InputPin extends JLSElement {
 
     //int watch = 0  assumed
     //String orient = "RIGHT" assumed
+
+    public String toString(){
+        return null;
+    }
 }

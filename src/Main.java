@@ -14,6 +14,9 @@ public class Main extends JPanel implements ActionListener {
         Hashtable table = l.load();
         System.out.println(table.size());
         System.out.println(table.get(1).toString());
+        Saver s = new Saver();
+        s.save(table);
+
     }
 
     @Override
