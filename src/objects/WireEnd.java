@@ -62,7 +62,14 @@ public class WireEnd extends JLSElement {
     }
 
     public String toString(){
-
+        String wireString = "";
+        String attachString = "";
+        for(Integer i : wire) {
+            wireString.concat(" ref wire " + i + "\n");
+        }
+        for(Integer i : attach) {
+            attachString.concat( " ref attach " + i + "\n");
+        }
         return ( "ELEMENT WireEnd\n"
                 + " int id " + id + "\n"
                 + " int x " + x + "\n"
@@ -70,8 +77,8 @@ public class WireEnd extends JLSElement {
                 + " int width " + width + "\n"
                 + " int height " + height + "\n"
                 + " String put " + put + "\n"
-                + " ref attach " + attach + "\n"
-                + " ref wire " + wire + "\n"
+                + attachString
+                + wireString
                 + "END\n"
         );
     }
