@@ -13,10 +13,10 @@ import java.util.zip.ZipOutputStream;
  */
 public class Saver {
     public static boolean save(Hashtable hashtable, String circuitName, String filename, String path){
-        System.out.println("Saving " + circuitName + " in the file " + filename + ". Path: " + path +".");
+        System.out.println("Saving " + circuitName + " in the file " + filename + ". Path: " + path + ".");
 
         try {
-            ZipOutputStream out = new ZipOutputStream(new FileOutputStream(path));
+            ZipOutputStream out = new ZipOutputStream(new FileOutputStream(path + "test"));
             out.putNextEntry(new ZipEntry("JLSCircuit"));
             PrintWriter output = new PrintWriter(out);
 
