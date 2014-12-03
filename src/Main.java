@@ -31,8 +31,6 @@ public class Main extends JPanel implements ActionListener {
         System.out.println(w.getWire());
         */
 
-        /*
-
         Saver s = new Saver();
 
         try {
@@ -44,8 +42,6 @@ public class Main extends JPanel implements ActionListener {
         Main test = new Main();
 
         Hashtable random = test.randomizer(table);
-
-        test.truthTable(4);
 
         try {
             s.save(random, l.getCircuitName(), "test" + l.getFilename(), l.getFile().getCanonicalPath() + "LULZ");
