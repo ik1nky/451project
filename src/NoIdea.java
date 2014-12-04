@@ -10,7 +10,7 @@ public class NoIdea {
     /*
     public static void main(String[] args){
         String iHateYou = "Test/ourScript.bash";
-        String[] myArray = {"/bin/sh", "-c", "Test/jlsCircuitTester -m 451 Files/fuck.jls Test/umm | grep \"Errors detected\" | awk -F\"-\" '{print $2}' | awk -F\":\" '{print $1}'"};
+        String[] myArray = {"/bin/sh", "-c", "Test/jlsCircuitTester -m 451 Files/ihatedropbox.jls Test/umm | grep \"Errors detected\" | awk -F\"-\" '{print $2}' | awk -F\":\" '{print $1}'"};
         try {
             Runtime rt = Runtime.getRuntime();
             Process p = rt.exec(myArray);
@@ -36,10 +36,10 @@ public class NoIdea {
 
     public static String[] getTruthTable(String circuitFilename, String testFilename){
         //System.out.println(circuitFilename + " --- " + testFilename);
-        //circuitFilename = "Files/fuck.jls";
+        //circuitFilename = "Files/ihatedropbox.jls";
         //testFilename = "Test/umm";
         //String iHateYou = "Test/ourScript.bash";
-        //String[] myArray = {"/bin/sh", "-c", "Test/jlsCircuitTester -m 451 Files/fuck.jls Test/umm | grep \"Errors detected\" | awk -F\"-\" '{print $2}' | awk -F\":\" '{print $1}'"};
+        //String[] myArray = {"/bin/sh", "-c", "Test/jlsCircuitTester -m 451 Files/ihatedropbox.jls Test/umm | grep \"Errors detected\" | awk -F\"-\" '{print $2}' | awk -F\":\" '{print $1}'"};
         String[] myArray = {"/bin/sh", "-c", "Test/jlsCircuitTester -m 451 " + circuitFilename + " " + testFilename + " | grep \"Errors detected\" | awk -F\"-\" '{print $2}' | awk -F\":\" '{print $1}'"};
 
         String temp[] = new String[100];
@@ -65,8 +65,8 @@ public class NoIdea {
 
     protected String[] getTruthTable(){
         String iHateYou = "Test/ourScript.bash";
-        //String[] myArray = {"/bin/sh", "-c", "Test/jlsCircuitTester -m 451 Files/fuck2.jls Test/umm | grep \"Errors detected\" | awk -F\"-\" '{print $2}' | awk -F\":\" '{print $1}'"};
-        String[] myArray = {"/bin/sh", "-c", "Test/jlsCircuitTester -m 451 Files/fuck2.jls Test/umm | grep \"Errors detected\" | awk -F\"-\" '{print $2}' | awk -F\":\" '{print $1}'"};
+        //String[] myArray = {"/bin/sh", "-c", "Test/jlsCircuitTester -m 451 Files/ihatedropbox2.jls Test/umm | grep \"Errors detected\" | awk -F\"-\" '{print $2}' | awk -F\":\" '{print $1}'"};
+        String[] myArray = {"/bin/sh", "-c", "Test/jlsCircuitTester -m 451 Files/ihatedropbox2.jls Test/umm | grep \"Errors detected\" | awk -F\"-\" '{print $2}' | awk -F\":\" '{print $1}'"};
         String temp[] = new String[100];
         try {
             Runtime rt = Runtime.getRuntime();
