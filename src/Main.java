@@ -25,24 +25,35 @@ public class Main extends JFrame implements ActionListener {
         JFrame frame = new JFrame("JLS Generator");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().add(emptyLabel, BorderLayout.NORTH);
-        frame.setSize(400, 800);
+        //frame.pack();//setSize(640, 480);
 
-        JPanel p1 = new JPanel(new GridBagLayout());
-        JPanel p2 = new JPanel(new GridBagLayout());
+        JPanel p1 = new JPanel(new FlowLayout());
 
-        JTextPane truthTableLabel = new JTextPane();
+        JTextArea truthTableLabel = new JTextArea(5,5);
+        JTextArea equationLabel = new JTextArea(5,50);
+        equationLabel.setLineWrap(true);
         truthTableLabel.setEditable(false);
-        truthTableLabel.setText("Loading the truth table... ");
-        p1.add(truthTableLabel);
-        frame.add(p1);
+        equationLabel.setEditable(false);
+        truthTableLabel.setText("Calculating the truth table... ");
+        equationLabel.setText("Calculating the equation... ");
 
-        frame.setVisible(true);
+
+        p1.add(truthTableLabel);
+        p1.add(equationLabel);
 
         //input the file
         Loader l = new Loader();
         Hashtable table = l.load();
 
+        ScreenshotOrDie.makeScreenShot(l.getFile().getAbsolutePath());
+        JLabel circuitPic = new JLabel();
+        ImageIcon imgThisImg = new ImageIcon("screengrab.jpg");
 
+        circuitPic.setIcon(imgThisImg);
+        p1.add(circuitPic);
+        frame.add(p1);
+        frame.pack();
+        frame.setVisible(true);
 
         /*
         System.out.println(table.size());
