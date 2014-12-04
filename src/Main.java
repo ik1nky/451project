@@ -43,14 +43,14 @@ public class Main extends JPanel implements ActionListener {
 
         test.truthTable(4, 0);
 
-//        Hashtable random = test.randomizer(table);
-//
-//        try {
-//            s.save(random, l.getCircuitName(), "test" + l.getFilename(), l.getFile().getCanonicalPath() + "LULZ");
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//
+        Hashtable random = test.randomizer(table);
+
+        try {
+            s.save(random, l.getCircuitName(), "test" + l.getFilename(), l.getFile().getCanonicalPath() + "LULZ");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
 //        System.out.println(test.getNumberOfInputs(table));
 
 
@@ -62,20 +62,6 @@ public class Main extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
-    }
-
-
-    public void makeEquation(Hashtable table) {
-        int outputId;
-        for (Object id : table.keySet()) {
-            JLSElement e = (JLSElement) table.get(id);
-            String name = e.getElementName();
-            if(name.equals("OutputPin")) {
-                outputId = e.getId();
-            }
-        }
-
 
     }
 
