@@ -19,6 +19,7 @@ public class Main extends JFrame implements ActionListener {
     public static void main(String[] args) {
 
         String testFilename = "Test/GeneratedTestFile";
+        NoIdea idea = new NoIdea();
 
         //Setup the GUI
         JLabel emptyLabel = new JLabel("");
@@ -43,7 +44,6 @@ public class Main extends JFrame implements ActionListener {
         Hashtable table = l.load();
 
 
-
         /*
         System.out.println(table.size());
         System.out.println(table.get(0).toString());
@@ -52,6 +52,7 @@ public class Main extends JFrame implements ActionListener {
         System.out.println(w.getAttach());
         System.out.println(w.getWire());
         */
+
 
         Saver s = new Saver();
 
@@ -72,16 +73,17 @@ public class Main extends JFrame implements ActionListener {
             e.printStackTrace();
         }
 
-//        System.out.println(test.getNumberOfInputs(table));
-        System.out.println(test.getNumberOfInputs(table));
+        //System.out.println(test.getNumberOfInputs(table));
+        //System.out.println(test.getNumberOfInputs(table));
 
-        System.out.println(test.truthTable(4));
+        //System.out.println(test.truthTable(4));
+        System.out.println("...");
         System.out.println(test.getEquation(test.truthTable(4)));
 
 
         //test.truthTable(test.getNumberOfInputs(table));
         //System.exit(0);
-
+        //
     }
 
     @Override
@@ -103,12 +105,11 @@ public class Main extends JFrame implements ActionListener {
 
             fw.write(inputs + "]\n");
             fw.write("  OUTPUTS\n");
-            fw.write("    Out 1\n");
+            fw.write("    Out 0\n");
             fw.close();
         } catch (IOException e) {
             System.out.println("RIP 2014");
             //e.printStackTrace();
-
         }
     }
 
@@ -248,11 +249,11 @@ public class Main extends JFrame implements ActionListener {
     public String truthTable(int num) {
         NoIdea idea = new NoIdea();
 
-        String ary[] = idea.getTruthTable();
+        String ary[] = idea.getTruthTable("Files/fuck.jls", "Test/umm");
         String table = "";
         switch(num) {
             case 2:
-                table += "Bits\na b    Output\n";
+                table += "Bits\nb a    Output\n";
                 int j = 0;
                 for(int k = 0; k < 4; k++) {
                     if (j <= ary.length - 1 && ary[j] != null) {
@@ -301,7 +302,7 @@ public class Main extends JFrame implements ActionListener {
                 break;
 
             case 3:
-                table += "Bits\na b c    Output\n";
+                table += "Bits\nc b a    Output\n";
                 int l = 0;
                 for(int k = 0; k < 8; k++) {
                     if (l <= ary.length - 1 && ary[l] != null) {
@@ -350,7 +351,7 @@ public class Main extends JFrame implements ActionListener {
                 break;
 
             case 4:
-                table += "Bits\na b c d    Output\n";
+                table += "Bits\nd c b a    Output\n";
 
                 int m = 0;
                 for(int k = 0; k < 16; k++) {
@@ -409,7 +410,7 @@ public class Main extends JFrame implements ActionListener {
     }
 
 
-    public String truthTable(int num, String circuitfilename, String testFilename) {
+    public String truthTable2(int num, String circuitfilename, String testFilename) {
         NoIdea idea = new NoIdea();
 
         String ary[] = idea.getTruthTable(circuitfilename, testFilename);
