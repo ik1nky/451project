@@ -69,6 +69,10 @@ public class Main extends JFrame implements ActionListener {
         }
 
         System.out.println(test.getNumberOfInputs(table));
+//        System.out.println(test.getNumberOfInputs(table));
+
+
+
         //test.truthTable(test.getNumberOfInputs(table));
         //System.exit(0);
 
@@ -78,7 +82,6 @@ public class Main extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
 
     }
-
 
 
     public int getNumberOfInputs(Hashtable table) {
@@ -93,9 +96,130 @@ public class Main extends JFrame implements ActionListener {
         return count;
     }
 
+    public String getEquation(String table) {
+        String tok[] = table.split("\\n");
+        String tokens[] = new String[5];
+        boolean filled[][] = new boolean[tok.length - 2][tokens.length];
 
 
     public String truthTable(int num) {
+        for(int i = 2; i < tok.length; i++) {
+            tokens = tok[i].split(" ");
+            for(int j = 0; j < 4; j++) {
+                System.out.print(tokens[j]);
+                if(tokens[j].equals("0")) {
+                    filled[i-2][j] = false;
+                }
+                else {
+                    filled[i-2][j] = true;
+                }
+            }
+            if(tokens[11].equals("0")) {
+                filled[i-2][4] = false;
+            }
+            else {
+                filled[i-2][4] = true;
+            }
+
+        }
+
+        for(int i = 0; i < filled.length; i++) {
+            for(int j = 0; j < filled[2].length; j++) {
+                System.out.print(filled[i][j]);
+            }
+            System.out.println("");
+        }
+
+        String towolf = "";
+        if(filled[0][3] != true && filled[0][3] != false) {
+            for(int i = 0; i < 4; i++) {
+                if(filled[i][2]) {
+                    if(towolf.equals("")) {
+                        towolf += "(";
+                    }
+                    else {
+                        towolf += " + (";
+                    }
+                    if(filled[i][0]) {
+                        towolf += "a * ";
+                    }
+                    else {
+                        towolf += "not a * ";
+                    }
+                    if(filled[i][1]) {
+                        towolf += "b)";
+                    }
+                    else {
+                        towolf += "not b)";
+                    }
+                }
+            }
+        }
+        else if(filled[0][4] != true && filled[0][4] != false) {
+            for(int i = 0; i < 8; i++) {
+                if(filled[i][3]) {
+                    if(towolf.equals("")) {
+                        towolf += "(";
+                    }
+                    else {
+                        towolf += " + (";
+                    }
+                    if(filled[i][0]) {
+                        towolf += "a * ";
+                    }
+                    else {
+                        towolf += "not a * ";
+                    }
+                    if(filled[i][1]) {
+                        towolf += "b * ";
+                    }
+                    else {
+                        towolf += "not b * ";
+                    }
+                    if(filled[i][2]) {
+                        towolf += "c)";
+                    }
+                    else {
+                        towolf += "not c)";
+                    }
+                }
+            }
+        }
+        else {
+            for(int i = 0; i < 16; i++) {
+                if(filled[i][4]) {
+                    if (towolf.equals("")) {
+                        towolf += "(";
+                    } else {
+                        towolf += " + (";
+                    }
+                    if (filled[i][0]) {
+                        towolf += "a * ";
+                    } else {
+                        towolf += "not a * ";
+                    }
+                    if (filled[i][1]) {
+                        towolf += "b * ";
+                    } else {
+                        towolf += "not b * ";
+                    }
+                    if (filled[i][2]) {
+                        towolf += "c * ";
+                    } else {
+                        towolf += "not c * ";
+                    }
+                    if (filled[i][3]) {
+                        towolf += "d)";
+                    } else {
+                        towolf += "not d)";
+                    }
+                }
+            }
+        }
+        return towolf;
+    }
+
+    public String truthTable(int num, int paneFlag) {
         NoIdea idea = new NoIdea();
 
         String ary[] = idea.getTruthTable();
@@ -251,6 +375,13 @@ public class Main extends JFrame implements ActionListener {
         }
         //JOptionPane.showMessageDialog(null, table);
 
+        //GET EQUATION TO PRINT ON THE TOP OF THE DIALOG BOX
+
+        System.out.println(getEquation(table));
+
+        if(paneFlag == 1) {
+            JOptionPane.showMessageDialog(null, table);
+        }
         return table;
     }
 
