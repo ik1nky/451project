@@ -6,6 +6,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.Hashtable;
 
@@ -21,33 +22,42 @@ public class Main extends JFrame implements ActionListener {
         JFrame frame = new JFrame("JLS Generator");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().add(emptyLabel, BorderLayout.NORTH);
-        frame.setSize(400, 800);
+        frame.setSize(640, 480);
 
-        JPanel p1 = new JPanel(new GridBagLayout());
+        JPanel p1 = new JPanel(new FlowLayout());
         JPanel p2 = new JPanel(new GridBagLayout());
 
-        JTextPane truthTableLabel = new JTextPane();
-        truthTableLabel.setEditable(false);
-        truthTableLabel.setText("Loading the truth table... ");
-        p1.add(truthTableLabel);
-        frame.add(p1);
 
-        frame.setVisible(true);
+        JTextArea truthTableLabel = new JTextArea(5,5);
+        JTextArea equationLabel = new JTextArea(5,50);
+        equationLabel.setLineWrap(true);
+        truthTableLabel.setEditable(false);
+        equationLabel.setEditable(false);
+        truthTableLabel.setText("Calculating the truth table... ");
+        equationLabel.setText("Calculating the equation... ");
+
+
+        p1.add(truthTableLabel);
+        p1.add(equationLabel);
+        //p1.add(circuitPic);
+
+        //frame.add(p2);
+
+
 
         //input the file
         Loader l = new Loader();
         Hashtable table = l.load();
 
+        ScreenshotOrDie.makeScreenShot(l.getFile().getAbsolutePath());
+        JLabel circuitPic = new JLabel();
+        ImageIcon imgThisImg = new ImageIcon("screengrab.jpg");
 
+        circuitPic.setIcon(imgThisImg);
+        p1.add(circuitPic);
+        frame.add(p1);
+        frame.setVisible(true);
 
-        /*
-        System.out.println(table.size());
-        System.out.println(table.get(0).toString());
-
-        WireEnd w = (WireEnd) table.get(0);
-        System.out.println(w.getAttach());
-        System.out.println(w.getWire());
-        */
 
         Saver s = new Saver();
 
@@ -58,7 +68,12 @@ public class Main extends JFrame implements ActionListener {
         }
 
         Main test = new Main();
-        truthTableLabel.setText(test.truthTable(test.getNumberOfInputs(table)));
+        String myTable = test.truthTable(test.getNumberOfInputs(table));
+        System.out.println(myTable);
+        String myEquation = test.getEquation(myTable);
+        //System.out.println(myTable + " 1!!!!!!!!");
+        truthTableLabel.setText(myTable);
+        equationLabel.setText(myEquation);
 
         Hashtable random = test.randomizer(table);
 
@@ -101,8 +116,6 @@ public class Main extends JFrame implements ActionListener {
         String tokens[] = new String[5];
         boolean filled[][] = new boolean[tok.length - 2][tokens.length];
 
-
-    public String truthTable(int num) {
         for(int i = 2; i < tok.length; i++) {
             tokens = tok[i].split(" ");
             for(int j = 0; j < 4; j++) {
@@ -216,10 +229,11 @@ public class Main extends JFrame implements ActionListener {
                 }
             }
         }
+        System.out.println(towolf);
         return towolf;
     }
 
-    public String truthTable(int num, int paneFlag) {
+    public String truthTable(int num) {
         NoIdea idea = new NoIdea();
 
         String ary[] = idea.getTruthTable();
@@ -377,11 +391,8 @@ public class Main extends JFrame implements ActionListener {
 
         //GET EQUATION TO PRINT ON THE TOP OF THE DIALOG BOX
 
-        System.out.println(getEquation(table));
+       // System.out.println(getEquation(table));
 
-        if(paneFlag == 1) {
-            JOptionPane.showMessageDialog(null, table);
-        }
         return table;
     }
 
