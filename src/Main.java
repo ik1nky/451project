@@ -26,7 +26,7 @@ public class Main extends JFrame implements ActionListener {
         JFrame frame = new JFrame("JLS Generator");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().add(emptyLabel, BorderLayout.NORTH);
-        //frame.pack();//setSize(640, 480);
+        frame.setSize(640, 640);
 
         JPanel p1 = new JPanel(new FlowLayout());
 
@@ -53,7 +53,7 @@ public class Main extends JFrame implements ActionListener {
         circuitPic.setIcon(imgThisImg);
         p1.add(circuitPic);
         frame.add(p1);
-        frame.pack();
+        //frame.pack();
         frame.setVisible(true);
 
         /*
@@ -75,7 +75,10 @@ public class Main extends JFrame implements ActionListener {
         }
 
         Main test = new Main();
-        truthTableLabel.setText(test.truthTable(test.getNumberOfInputs(table)));
+        String tableText = test.truthTable(test.getNumberOfInputs(table));
+        String eqText = test.getEquation(tableText);
+        truthTableLabel.setText(tableText);
+        equationLabel.setText(eqText);
 
         Hashtable random = test.randomizer(table);
 
