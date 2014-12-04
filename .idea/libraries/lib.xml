@@ -2,7 +2,7 @@
   <library name="lib">
     <CLASSES>
       <root url="file://$PROJECT_DIR$/Lib" />
-      <root url="jar://$PROJECT_DIR$/Lib/jlsCircuitTester.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jlsCircuitTester.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
