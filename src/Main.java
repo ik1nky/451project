@@ -41,7 +41,7 @@ public class Main extends JPanel implements ActionListener {
 
         Main test = new Main();
 
-        test.truthTable(4, 0);
+        test.truthTable(4, 1);
 
         Hashtable random = test.randomizer(table);
 
@@ -83,9 +83,14 @@ public class Main extends JPanel implements ActionListener {
         String tokens[] = new String[5];
         boolean filled[][] = new boolean[tok.length - 2][tokens.length];
 
+        for(int i = 0; i < tok.length; i++) {
+            System.out.println(tok[i]);
+        }
+
         for(int i = 2; i < tok.length; i++) {
             tokens = tok[i].split(" ");
-            for(int j = 0; j < 5; j++) {
+            for(int j = 0; j < 4; j++) {
+                System.out.print(tokens[j]);
                 if(tokens[j].equals("0")) {
                     filled[i-2][j] = false;
                 }
@@ -93,7 +98,22 @@ public class Main extends JPanel implements ActionListener {
                     filled[i-2][j] = true;
                 }
             }
+            if(tokens[11].equals("0")) {
+                filled[i-2][4] = false;
+            }
+            else {
+                filled[i-2][4] = true;
+            }
+
         }
+
+        for(int i = 0; i < filled.length; i++) {
+            for(int j = 0; j < filled[2].length; j++) {
+                System.out.print(filled[i][j]);
+            }
+            System.out.println("");
+        }
+
         String towolf = "";
         if(filled[0][3] != true && filled[0][3] != false) {
             for(int i = 0; i < 4; i++) {
@@ -340,7 +360,7 @@ public class Main extends JPanel implements ActionListener {
 
         //GET EQUATION TO PRINT ON THE TOP OF THE DIALOG BOX
 
-//        System.out.println(getEquation(table));
+        System.out.println(getEquation(table));
 
         if(paneFlag == 1) {
             JOptionPane.showMessageDialog(null, table);
