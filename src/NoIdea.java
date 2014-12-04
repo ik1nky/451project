@@ -35,7 +35,7 @@ public class NoIdea {
     }
 
     public static String[] getTruthTable(String circuitFilename, String testFilename){
-        System.out.println(circuitFilename + " --- " + testFilename);
+        //System.out.println(circuitFilename + " --- " + testFilename);
         //circuitFilename = "Files/fuck.jls";
         //testFilename = "Test/umm";
         //String iHateYou = "Test/ourScript.bash";
@@ -63,9 +63,10 @@ public class NoIdea {
         return temp;
     }
 
-    public String[] getTruthTable(){
+    protected String[] getTruthTable(){
         String iHateYou = "Test/ourScript.bash";
-        String[] myArray = {"/bin/sh", "-c", "Test/jlsCircuitTester -m 451 Files/fuck.jls Test/umm | grep \"Errors detected\" | awk -F\"-\" '{print $2}' | awk -F\":\" '{print $1}'"};
+        //String[] myArray = {"/bin/sh", "-c", "Test/jlsCircuitTester -m 451 Files/fuck2.jls Test/umm | grep \"Errors detected\" | awk -F\"-\" '{print $2}' | awk -F\":\" '{print $1}'"};
+        String[] myArray = {"/bin/sh", "-c", "Test/jlsCircuitTester -m 451 Files/fuck2.jls Test/umm | grep \"Errors detected\" | awk -F\"-\" '{print $2}' | awk -F\":\" '{print $1}'"};
         String temp[] = new String[100];
         try {
             Runtime rt = Runtime.getRuntime();
@@ -76,7 +77,7 @@ public class NoIdea {
 
             int i = 0;
             while ((s = stdInput.readLine()) != null){
-                //System.out.println(s);
+                System.out.println(s);
                 temp[i] = s;
                 i++;
             }
