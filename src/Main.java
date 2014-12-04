@@ -19,6 +19,8 @@ public class Main extends JFrame implements ActionListener {
     public static void main(String[] args) {
 
         String testFilename = "Test/GeneratedTestFile";
+
+        createTestFile(4,testFilename);
         NoIdea idea = new NoIdea();
 
         //Setup the GUI
@@ -75,7 +77,7 @@ public class Main extends JFrame implements ActionListener {
         }
 
         Main test = new Main();
-        String tableText = test.truthTable(test.getNumberOfInputs(table));
+        String tableText = test.truthTable(test.getNumberOfInputs(table),l.getFile().getPath(),testFilename);
         String eqText = test.getEquation(tableText);
         truthTableLabel.setText(tableText);
         equationLabel.setText(eqText);
@@ -92,8 +94,8 @@ public class Main extends JFrame implements ActionListener {
         //System.out.println(test.getNumberOfInputs(table));
 
         //System.out.println(test.truthTable(4));
-        System.out.println("...");
-        System.out.println(test.getEquation(test.truthTable(4)));
+        //System.out.println("...");
+        //System.out.println(test.getEquation(test.truthTable(4)));
 
 
         //test.truthTable(test.getNumberOfInputs(table));
@@ -261,10 +263,10 @@ public class Main extends JFrame implements ActionListener {
         return towolf;
     }
 
-    public String truthTable(int num) {
+    public String truthTable(int num,String jlsFile, String testFile) {
         NoIdea idea = new NoIdea();
 
-        String ary[] = idea.getTruthTable("Files/fuck.jls", "Test/umm");
+        String ary[] = idea.getTruthTable(jlsFile, testFile);
         String table = "";
         switch(num) {
             case 2:
