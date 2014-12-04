@@ -7,6 +7,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Hashtable;
 
@@ -15,6 +16,8 @@ import java.util.Hashtable;
  * Created by jackrosenhauer on 11/30/14.
  */
 public class Main extends JFrame implements ActionListener {
+
+
 
     public static void main(String[] args) {
         //Setup the GUI
@@ -25,6 +28,8 @@ public class Main extends JFrame implements ActionListener {
         frame.setSize(640, 480);
 
         JPanel p1 = new JPanel(new FlowLayout());
+        String testFilename = "Test/GeneratedTestFile";
+        JPanel p1 = new JPanel(new GridBagLayout());
         JPanel p2 = new JPanel(new GridBagLayout());
 
 
@@ -48,6 +53,7 @@ public class Main extends JFrame implements ActionListener {
         //input the file
         Loader l = new Loader();
         Hashtable table = l.load();
+        //createTestFile(5, testFilename);
 
         ScreenshotOrDie.makeScreenShot(l.getFile().getAbsolutePath());
         JLabel circuitPic = new JLabel();
@@ -75,7 +81,11 @@ public class Main extends JFrame implements ActionListener {
         truthTableLabel.setText(myTable);
         equationLabel.setText(myEquation);
 
+        //Randomized our gates
         Hashtable random = test.randomizer(table);
+
+        //Creates the jlsCircuitTester test file with the correct number of inputs
+        createTestFile(test.getNumberOfInputs(random), testFilename);
 
         try {
             s.save(random, l.getCircuitName(), "test" + l.getFilename(), l.getFile().getCanonicalPath() + "LULZ");
@@ -84,6 +94,8 @@ public class Main extends JFrame implements ActionListener {
         }
 
         System.out.println(test.getNumberOfInputs(table));
+        test.truthTable(test.getNumberOfInputs(table), l.getFile().toString(), testFilename);
+        System.exit(0);
 //        System.out.println(test.getNumberOfInputs(table));
 
 
@@ -109,6 +121,29 @@ public class Main extends JFrame implements ActionListener {
             }
         }
         return count;
+    }
+
+    public static void createTestFile(int bits, String testFilename){
+        try {
+            FileWriter fw = new FileWriter(testFilename);
+            String inputs = "0";
+            fw.write("BEGIN givemeallyougot\n");
+            fw.write("  INPUTS\n");
+            fw.write("    Input\t[ ");
+
+            for (int i = 1; i < Math.pow(2, bits); i++){
+                inputs = inputs + ", " + i;
+            }
+
+            fw.write(inputs + "]\n");
+            fw.write("  OUTPUTS\n");
+            fw.write("    Out 1\n");
+            fw.close();
+        } catch (IOException e) {
+            System.out.println("RIP 2014");
+            //e.printStackTrace();
+
+        }
     }
 
     public String getEquation(String table) {
@@ -229,14 +264,13 @@ public class Main extends JFrame implements ActionListener {
                 }
             }
         }
-        System.out.println(towolf);
         return towolf;
     }
-
-    public String truthTable(int num) {
+    
+    public void truthTable(int num, String circuitfilename, String testFilename) {
         NoIdea idea = new NoIdea();
 
-        String ary[] = idea.getTruthTable();
+        String ary[] = idea.getTruthTable(circuitfilename, testFilename);
         String table = "";
         switch(num) {
             case 2:
@@ -391,8 +425,11 @@ public class Main extends JFrame implements ActionListener {
 
         //GET EQUATION TO PRINT ON THE TOP OF THE DIALOG BOX
 
-       // System.out.println(getEquation(table));
+        System.out.println(getEquation(table));
 
+        if(paneFlag == 1) {
+            JOptionPane.showMessageDialog(null, table);
+        }
         return table;
     }
 
