@@ -3,6 +3,7 @@ import objects.JLSElement;
 
 import objects.*;
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
@@ -12,14 +13,31 @@ import java.util.Hashtable;
 /**
  * Created by jackrosenhauer on 11/30/14.
  */
-public class Main extends JPanel implements ActionListener {
+public class Main extends JFrame implements ActionListener {
 
     public static void main(String[] args) {
-        //input the file....
+        //Setup the GUI
+        JLabel emptyLabel = new JLabel("");
+        JFrame frame = new JFrame("JLS Generator");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.getContentPane().add(emptyLabel, BorderLayout.NORTH);
+        frame.setSize(400, 800);
 
+        JPanel p1 = new JPanel(new GridBagLayout());
+        JPanel p2 = new JPanel(new GridBagLayout());
 
+        JTextPane truthTableLabel = new JTextPane();
+        truthTableLabel.setEditable(false);
+        truthTableLabel.setText("Loading the truth table... ");
+        p1.add(truthTableLabel);
+        frame.add(p1);
+
+        frame.setVisible(true);
+
+        //input the file
         Loader l = new Loader();
         Hashtable table = l.load();
+
 
 
         /*
@@ -40,6 +58,7 @@ public class Main extends JPanel implements ActionListener {
         }
 
         Main test = new Main();
+        truthTableLabel.setText(test.truthTable(test.getNumberOfInputs(table)));
 
         Hashtable random = test.randomizer(table);
 
@@ -49,11 +68,9 @@ public class Main extends JPanel implements ActionListener {
             e.printStackTrace();
         }
 
-        */
-        Main test = new Main();
         System.out.println(test.getNumberOfInputs(table));
         //test.truthTable(test.getNumberOfInputs(table));
-        System.exit(0);
+        //System.exit(0);
 
     }
 
@@ -78,7 +95,7 @@ public class Main extends JPanel implements ActionListener {
 
 
 
-    public void truthTable(int num) {
+    public String truthTable(int num) {
         NoIdea idea = new NoIdea();
 
         String ary[] = idea.getTruthTable();
@@ -232,7 +249,9 @@ public class Main extends JPanel implements ActionListener {
                 }
                 break;
         }
-        JOptionPane.showMessageDialog(null, table);
+        //JOptionPane.showMessageDialog(null, table);
+
+        return table;
     }
 
     public Hashtable randomizer(Hashtable table) {
