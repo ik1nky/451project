@@ -5,6 +5,7 @@ import objects.*;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Hashtable;
 
@@ -14,23 +15,15 @@ import java.util.Hashtable;
  */
 public class Main extends JPanel implements ActionListener {
 
-    public static void main(String[] args) {
-        //input the file....
 
+
+    public static void main(String[] args) {
+
+        String testFilename = "Test/GeneratedTestFile";
 
         Loader l = new Loader();
         Hashtable table = l.load();
-
-
-        /*
-        System.out.println(table.size());
-        System.out.println(table.get(0).toString());
-
-        WireEnd w = (WireEnd) table.get(0);
-        System.out.println(w.getAttach());
-        System.out.println(w.getWire());
-        */
-
+        //createTestFile(5, testFilename);
         Saver s = new Saver();
 
         try {
@@ -41,18 +34,19 @@ public class Main extends JPanel implements ActionListener {
 
         Main test = new Main();
 
+        //Randomized our gates
         Hashtable random = test.randomizer(table);
+
+        //Creates the jlsCircuitTester test file with the correct number of inputs
+        createTestFile(test.getNumberOfInputs(random), testFilename);
 
         try {
             s.save(random, l.getCircuitName(), "test" + l.getFilename(), l.getFile().getCanonicalPath() + "LULZ");
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        */
-        Main test = new Main();
         System.out.println(test.getNumberOfInputs(table));
-        //test.truthTable(test.getNumberOfInputs(table));
+        test.truthTable(test.getNumberOfInputs(table), l.getFile().toString(), testFilename);
         System.exit(0);
 
     }
@@ -77,11 +71,33 @@ public class Main extends JPanel implements ActionListener {
     }
 
 
+    public static void createTestFile(int bits, String testFilename){
+        try {
+            FileWriter fw = new FileWriter(testFilename);
+            String inputs = "0";
+            fw.write("BEGIN givemeallyougot\n");
+            fw.write("  INPUTS\n");
+            fw.write("    Input\t[ ");
 
-    public void truthTable(int num) {
+            for (int i = 1; i < Math.pow(2, bits); i++){
+                inputs = inputs + ", " + i;
+            }
+
+            fw.write(inputs + "]\n");
+            fw.write("  OUTPUTS\n");
+            fw.write("    Out 1\n");
+            fw.close();
+        } catch (IOException e) {
+            System.out.println("RIP 2014");
+            //e.printStackTrace();
+
+        }
+    }
+
+    public void truthTable(int num, String circuitfilename, String testFilename) {
         NoIdea idea = new NoIdea();
 
-        String ary[] = idea.getTruthTable();
+        String ary[] = idea.getTruthTable(circuitfilename, testFilename);
         String table = "";
         switch(num) {
             case 2:
@@ -402,4 +418,5 @@ public class Main extends JPanel implements ActionListener {
         }
         return toreturn;
     }
+
 }

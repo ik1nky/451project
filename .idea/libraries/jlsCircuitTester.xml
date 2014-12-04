@@ -1,7 +1,7 @@
 <component name="libraryTable">
   <library name="jlsCircuitTester">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/Lib/jlsCircuitTester.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jlsCircuitTester.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
